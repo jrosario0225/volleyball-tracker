@@ -58,10 +58,25 @@ function App() {
   return(
     <div>
       <h1> Volleyball Tracker </h1>
+
+      <h2>Hustle</h2> 
       <p>Hustle Earned: {hustleEarned} </p>
+      <button onClick={addHustleEarned}>+</button>
+      <button onClick={subtractHustleEarned}>-</button>
+
       <p>Hustle Errors: {hustleErrors} </p>
+      <button onClick={addHustleErrors}>+</button>
+      <button onClick={subtractHustleErrors}>-</button>
+
+      <h2>Other Team</h2>
+
       <p>Other Earned: {otherEarned} </p>
+      <button onClick={addOtherEarned}>+</button>
+      <button onClick={subtractOtherEarned}>-</button>
+
       <p>Other Errors: {otherErrors} </p>
+      <button onClick={addOtherErrors}>+</button>
+      <button onClick={subtractOtherErrors}>-</button>
     </div>
   )
 }
