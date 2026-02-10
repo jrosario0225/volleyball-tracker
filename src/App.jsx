@@ -59,6 +59,12 @@ function App() {
     <div>
       <h1> Volleyball Tracker </h1>
 
+      <div>
+        <h2>Score</h2>
+        <p>Hustle: {hustleEarned + otherErrors}</p>
+        <p>Other Team: {otherEarned + hustleErrors}</p>
+      </div>
+
       <h2>Hustle</h2> 
       <p>Hustle Earned: {hustleEarned} </p>
       <button onClick={addHustleEarned}>+</button>
