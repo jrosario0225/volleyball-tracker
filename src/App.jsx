@@ -15,6 +15,46 @@ function App() {
   const [otherErrors, setOtherErrors] = useState(0)
 
 
+  // All functions to update points earned and errors
+
+  // Hustle EARNED
+  const addHustleEarned = () => {
+    setHustleEarned(hustleEarned + 1)
+  }
+
+  const subtractHustleEarned = () => {
+    setHustleEarned(hustleEarned - 1)
+  }
+
+  // Hustle ERRORS
+  const addHustleErrors = () => {
+    setHustleErrors(hustleErrors + 1)
+  }
+
+  const subtractHustleErrors = () => {
+    setHustleErrors(hustleErrors - 1)
+  }
+
+  // Other EARNED
+  const addOtherEarned = () => {
+    setOtherEarned(otherEarned + 1)
+  }
+
+  const subtractOtherEarned = () => {
+    setOtherEarned(otherEarned - 1)
+  }
+
+  // other ERROR
+  const addOtherErrors = () => {
+    setOtherErrors(otherErrors + 1)
+  }
+
+  const subtractOtherErrors = () => {
+    setOtherErrors(otherErrors -1)
+  }
+
+
+
   return(
     <div>
       <h1> Volleyball Tracker </h1>
