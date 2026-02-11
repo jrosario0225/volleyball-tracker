@@ -58,7 +58,6 @@ function App() {
 
       {/* Scoreboard at top */}
       <div className="scoreboard">
-        <h1> Stat Tracker </h1>
         <div className="scores">
           <div className="team-score">
             <img src="/hustle-logo.jpeg" alt="Hustle logo" className="team-logo" />
