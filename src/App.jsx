@@ -2,8 +2,6 @@ import { useState } from 'react'
 import './App.css'
 import { Scoreboard } from './Scoreboard'
 
-
-
 function App() {
 
   // for Hustle's earned points and errors
@@ -68,7 +66,10 @@ function App() {
 
         {/* Left column - HUSTLE */}
         <div className="team-section">
-          <h2>Hustle</h2>
+          <div className="team-stat-name">
+            <img src="/hustle-logo.jpeg" alt="Hustle logo" className="team-logo" />
+            <h2>Hustle</h2>
+          </div>
 
           {/* Putting Earned + Error side-by-side */}
           <div className="stats-row">
@@ -94,7 +95,10 @@ function App() {
 
         {/* Right Column - OTHER TEAM */}
         <div className="team-section">
-          <h2>Other Team</h2>
+          <div className="team-stat-name">
+            <h2>Other Team</h2>
+          </div>
+
 
           <div className="stats-row">
             <div className="stat-item">

@@ -25,7 +25,24 @@
 }
 
 .team-name {
+  display: flex;
+  align-items: center;
   min-width: 200px;
+}
+
+.justify-right {
+  justify-content: end;
+}
+
+.justify-left {
+  justify-content: start;
+}
+
+.team-logo {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+  border-radius: 10px;
 }
 
 .total-score {
@@ -35,7 +52,6 @@
   color: white;
   font-weight: bold;
 }
-
 
 /* Teams sections container */
 .teams-container {
@@ -62,7 +78,12 @@
 .team-section h2 {
   font-size: 28px;
   text-align: center;
-  margin-bottom: 10px;
+}
+
+.team-stat-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Stats row - Earned and Errors side-by-side */
