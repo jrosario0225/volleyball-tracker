@@ -50,39 +50,47 @@ function App() {
   }
 
   const subtractOtherErrors = () => {
-    setOtherErrors(otherErrors -1)
+    setOtherErrors(otherErrors - 1)
   }
 
 
 
-  return(
-    <div>
-      <h1> Volleyball Tracker </h1>
+  return (
+    <div className="app">
 
-      <div>
-        <h2>Score</h2>
-        <p>Hustle: {hustleEarned + otherErrors}</p>
-        <p>Other Team: {otherEarned + hustleErrors}</p>
+      {/* Scoreboard at top */}
+      <div className="scoreboard">
+        <h1> Volleyball Tracker </h1>
+        <div className="scores">
+          <h2>Score</h2>
+          <p>Hustle: {hustleEarned + otherErrors}</p>
+          <p>Other Team: {otherEarned + hustleErrors}</p>
+        </div>
       </div>
 
-      <h2>Hustle</h2> 
-      <p>Hustle Earned: {hustleEarned} </p>
-      <button onClick={addHustleEarned}>+</button>
-      <button onClick={subtractHustleEarned}>-</button>
+      {/* Two-column layout */}
+      <div className="teams-container">
 
-      <p>Hustle Errors: {hustleErrors} </p>
-      <button onClick={addHustleErrors}>+</button>
-      <button onClick={subtractHustleErrors}>-</button>
+        {/* Left column - HUSTLE */}
+        <h2>Hustle</h2>
+        <p>Hustle Earned: {hustleEarned} </p>
+        <button onClick={addHustleEarned}>+</button>
+        <button onClick={subtractHustleEarned}>-</button>
 
-      <h2>Other Team</h2>
+        <p>Hustle Errors: {hustleErrors} </p>
+        <button onClick={addHustleErrors}>+</button>
+        <button onClick={subtractHustleErrors}>-</button>
 
-      <p>Other Earned: {otherEarned} </p>
-      <button onClick={addOtherEarned}>+</button>
-      <button onClick={subtractOtherEarned}>-</button>
+        {/* Right Column - OTHER TEAM */}
+        <h2>Other Team</h2>
+        <p>Other Earned: {otherEarned} </p>
+        <button onClick={addOtherEarned}>+</button>
+        <button onClick={subtractOtherEarned}>-</button>
 
-      <p>Other Errors: {otherErrors} </p>
-      <button onClick={addOtherErrors}>+</button>
-      <button onClick={subtractOtherErrors}>-</button>
+        <p>Other Errors: {otherErrors} </p>
+        <button onClick={addOtherErrors}>+</button>
+        <button onClick={subtractOtherErrors}>-</button>
+      </div>
     </div>
   )
 }
