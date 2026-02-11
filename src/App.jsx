@@ -76,6 +76,7 @@ function App() {
         <div className="team-section">
           <h2>Hustle</h2>
 
+          {/* Putting Earned + Error side-by-side */}
           <div className="stats-row">
             <div className="stat-item">
               <p>Hustle Earned: {hustleEarned} </p>
@@ -85,11 +86,16 @@ function App() {
             </div>
           </div>
 
-          <button onClick={addHustleEarned}>+</button>
-          <button onClick={subtractHustleEarned}>-</button>
-
-          <button onClick={addHustleErrors}>+</button>
-          <button onClick={subtractHustleErrors}>-</button>
+          <div className="buttons-row">
+            <div className="button-group">
+              <button onClick={addHustleEarned}>+</button>
+              <button onClick={subtractHustleEarned}>-</button>
+            </div>
+            <div className="button-group">
+              <button onClick={addHustleErrors}>+</button>
+              <button onClick={subtractHustleErrors}>-</button>
+            </div>
+          </div>
         </div>
 
         {/* Right Column - OTHER TEAM */}

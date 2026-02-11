@@ -18,3 +18,62 @@
   text-align: center;
 }
 
+.scoreboard h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.scores {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-left: 110px;
+}
+
+.scores p {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+/* Teams sections container */
+.teams-container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+.team-section {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* This is the Hustle column */
+.team-section:first-child {
+  border-right: 2px solid gray;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.team-section h2 {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Stats row - Earned and Errors side-by-bside */
+
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.stat-item p {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
