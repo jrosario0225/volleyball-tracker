@@ -60,10 +60,11 @@ function App() {
       <div className="scoreboard">
         <h1> Stat Tracker </h1>
         <div className="scores">
-          <div>
+          <div className="team-score">
+            <img src="/hustle-logo.jpeg" alt="Hustle logo" className="team-logo" />
             <p>Hustle: {hustleEarned + otherErrors}</p>
           </div>
-          <div>
+          <div className="team-score">
             <p>{otherEarned + hustleErrors}: Other Team</p>
           </div>
         </div>
@@ -74,7 +75,10 @@ function App() {
 
         {/* Left column - HUSTLE */}
         <div className="team-section">
-          <h2>Hustle</h2>
+          <div className="team-stat-name">
+            <img src="/hustle-logo.jpeg" alt="Hustle logo" className="team-logo" />
+            <h2>Hustle</h2>
+          </div>
 
           {/* Putting Earned + Error side-by-side */}
           <div className="stats-row">
