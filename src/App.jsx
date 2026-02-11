@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 
@@ -72,16 +70,19 @@ function App() {
       <div className="teams-container">
 
         {/* Left column - HUSTLE */}
-        <h2>Hustle</h2>
-        <p>Hustle Earned: {hustleEarned} </p>
-        <button onClick={addHustleEarned}>+</button>
-        <button onClick={subtractHustleEarned}>-</button>
+        <div className="team-section">
+          <h2>Hustle</h2>
+          <p>Hustle Earned: {hustleEarned} </p>
+          <button onClick={addHustleEarned}>+</button>
+          <button onClick={subtractHustleEarned}>-</button>
 
-        <p>Hustle Errors: {hustleErrors} </p>
-        <button onClick={addHustleErrors}>+</button>
-        <button onClick={subtractHustleErrors}>-</button>
+          <p>Hustle Errors: {hustleErrors} </p>
+          <button onClick={addHustleErrors}>+</button>
+          <button onClick={subtractHustleErrors}>-</button>
+        </div>
 
         {/* Right Column - OTHER TEAM */}
+        <div className="team-section">
         <h2>Other Team</h2>
         <p>Other Earned: {otherEarned} </p>
         <button onClick={addOtherEarned}>+</button>
@@ -90,6 +91,7 @@ function App() {
         <p>Other Errors: {otherErrors} </p>
         <button onClick={addOtherErrors}>+</button>
         <button onClick={subtractOtherErrors}>-</button>
+      </div>
       </div>
     </div>
   )
