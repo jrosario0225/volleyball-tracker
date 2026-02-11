@@ -46,6 +46,8 @@
 }
 
 .total-score {
+  display: flex;
+  align-items: center;
   padding: 0px 15px;
   border: 3px solid #333;
   border-radius: 8px;
@@ -71,8 +73,6 @@
 /* This is the Hustle column */
 .team-section:first-child {
   border-right: 2px solid gray;
-  margin-top: 15px;
-  margin-bottom: 15px;
 }
 
 .team-section h2 {
@@ -84,6 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 50px;
 }
 
 /* Stats row - Earned and Errors side-by-side */
