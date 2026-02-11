@@ -6,9 +6,11 @@
 
 .app {
   min-height: 100vh;
-  
+  display: flex;
+  flex-direction: column;
 }
 
+/* Scoreboard styles */
 .scoreboard {
   background-color: #1a1a1a;
   color: white;
@@ -16,6 +18,3 @@
   text-align: center;
 }
 
-.scores{
-
-}
