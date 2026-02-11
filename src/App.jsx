@@ -58,11 +58,14 @@ function App() {
 
       {/* Scoreboard at top */}
       <div className="scoreboard">
-        <h1> Volleyball Tracker </h1>
+        <h1> Stat Tracker </h1>
         <div className="scores">
-          <h2>Score</h2>
-          <p>Hustle: {hustleEarned + otherErrors}</p>
-          <p>Other Team: {otherEarned + hustleErrors}</p>
+          <div>
+            <p>Hustle: {hustleEarned + otherErrors}</p>
+          </div>
+          <div>        
+            <p>{otherEarned + hustleErrors}: Other Team</p>
+          </div>       
         </div>
       </div>
 
