@@ -91,12 +91,12 @@ function App() {
 
           <div className="buttons-row">
             <div className="button-group">
-              <button onClick={subtractHustleEarned}>-</button>
-              <button onClick={addHustleEarned}>+</button>
+              <button onClick={subtractHustleEarned} className="button-subtract">-</button>
+              <button onClick={addHustleEarned} className="button-add">+</button>
             </div>
             <div className="button-group">
-              <button onClick={subtractHustleErrors}>-</button>
-              <button onClick={addHustleErrors}>+</button>
+              <button onClick={subtractHustleErrors} className="button-subtract">-</button>
+              <button onClick={addHustleErrors} className="button-add">+</button>
             </div>
           </div>
         </div>
@@ -116,12 +116,12 @@ function App() {
 
           <div className="buttons-row">
             <div className="button-group">
-              <button onClick={subtractOtherEarned}>-</button>
-              <button onClick={addOtherEarned}>+</button>
+              <button onClick={subtractOtherEarned} className="button-subtract">-</button>
+              <button onClick={addOtherEarned} className="button-add">+</button>
             </div>
             <div className="button-group">
-              <button onClick={subtractOtherErrors}>-</button>
-              <button onClick={addOtherErrors}>+</button>
+              <button onClick={subtractOtherErrors} className="button-subtract">-</button>
+              <button onClick={addOtherErrors} className="button-add">+</button>
             </div>
           </div>
 

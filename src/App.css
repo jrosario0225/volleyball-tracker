@@ -126,3 +126,11 @@ button {
 button:active {
   transform: scale(0.95);
 }
+
+.button-add {
+  background-color: #333333
+}
+
+.button-subtract {
+  background-color: #555555
+}
