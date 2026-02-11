@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { Scoreboard } from './Scoreboard'
 
 
 
@@ -51,23 +52,16 @@ function App() {
     setOtherErrors(otherErrors - 1)
   }
 
-
+  const hustleTotalScore = hustleEarned + otherErrors
+  const otherTotalScore = otherEarned + hustleErrors
 
   return (
     <div className="app">
 
-      {/* Scoreboard at top */}
-      <div className="scoreboard">
-        <h1> Stat Tracker </h1>
-        <div className="scores">
-          <div>
-            <p>Hustle: {hustleEarned + otherErrors}</p>
-          </div>
-          <div>
-            <p>{otherEarned + hustleErrors}: Other Team</p>
-          </div>
-        </div>
-      </div>
+      <Scoreboard 
+        hustleTotalScore={hustleTotalScore} 
+        otherTotalScore={otherTotalScore}
+      />
 
       {/* Two-column layout */}
       <div className="teams-container">
