@@ -101,13 +101,27 @@ function App() {
         {/* Right Column - OTHER TEAM */}
         <div className="team-section">
           <h2>Other Team</h2>
-          <p>Other Earned: {otherEarned} </p>
-          <button onClick={addOtherEarned}>+</button>
-          <button onClick={subtractOtherEarned}>-</button>
 
-          <p>Other Errors: {otherErrors} </p>
-          <button onClick={addOtherErrors}>+</button>
-          <button onClick={subtractOtherErrors}>-</button>
+          <div className="stats-row">
+            <div className="stat-item">
+              <p>Other Earned: {otherEarned} </p>
+            </div>
+            <div className="stat-item">
+              <p>Other Errors: {otherErrors} </p>
+            </div>
+          </div>
+
+          <div className="buttons-row">
+            <div className="button-group">
+              <button onClick={subtractOtherEarned}>-</button>
+              <button onClick={addOtherEarned}>+</button>
+            </div>
+            <div className="button-group">
+              <button onClick={subtractOtherErrors}>-</button>
+              <button onClick={addOtherErrors}>+</button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
