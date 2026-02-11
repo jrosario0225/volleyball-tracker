@@ -88,12 +88,12 @@ function App() {
 
           <div className="buttons-row">
             <div className="button-group">
-              <button onClick={addHustleEarned}>+</button>
               <button onClick={subtractHustleEarned}>-</button>
+              <button onClick={addHustleEarned}>+</button>
             </div>
             <div className="button-group">
-              <button onClick={addHustleErrors}>+</button>
               <button onClick={subtractHustleErrors}>-</button>
+              <button onClick={addHustleErrors}>+</button>
             </div>
           </div>
         </div>
