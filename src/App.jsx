@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 import Scoreboard from './components/Scoreboard'
+import TeamSection from './components/TeamSection'
 
 function App() {
 
