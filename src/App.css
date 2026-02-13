@@ -10,48 +10,6 @@
   flex-direction: column;
 }
 
-/* Scoreboard styles */
-.scoreboard {
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  background-color: #1a1a1a;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-.scoreboard h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.scores {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  margin-left: 50px;
-}
-
-.scores p {
-  font-size: 48px;
-  font-weight: bold;
-}
-
-.team-score {
-  display: flex;
-  align-items: center;
-}
-
-.team-logo {
-  width: 50px;
-  height: auto;
-  margin-right: 10px;
-  border-radius: 10px;
-}
-
 /* Teams sections container */
 .teams-container {
   display: flex;

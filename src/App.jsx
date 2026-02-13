@@ -57,19 +57,6 @@ const otherTotalScore = otherEarned + hustleErrors
   return (
     <div className="app">
 
-      {/* Scoreboard at top */}
-      {/* <div className="scoreboard">
-        <div className="scores">
-          <div className="team-score">
-            <img src="/hustle-logo.jpeg" alt="Hustle logo" className="team-logo" />
-            <p>Hustle: {hustleEarned + otherErrors}</p>
-          </div>
-          <div className="team-score">
-            <p>{otherEarned + hustleErrors}: Other Team</p>
-          </div>
-        </div>
-      </div> */}
-
       <Scoreboard
       hustleTotalScore={hustleTotalScore}
       otherTotalScore={otherTotalScore} 
@@ -80,10 +67,6 @@ const otherTotalScore = otherEarned + hustleErrors
 
         {/* Left column - HUSTLE */}
         <div className="team-section">
-          <div className="team-stat-name">
-            <img src="/hustle-logo.jpeg" alt="Hustle logo" className="team-logo" />
-            <h2>Hustle</h2>
-          </div>
 
           {/* Putting Earned + Error side-by-side */}
           <div className="stats-row">
@@ -109,7 +92,6 @@ const otherTotalScore = otherEarned + hustleErrors
 
         {/* Right Column - OTHER TEAM */}
         <div className="team-section">
-          <h2>Other Team</h2>
 
           <div className="stats-row">
             <div className="stat-item">

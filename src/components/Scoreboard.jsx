@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from 'react'
 import "./Scoreboard.css"
 
 /* props are hustleTotalScore and otherTotalScore
@@ -14,8 +14,10 @@ function Scoreboard({hustleTotalScore, otherTotalScore}) {
                 </div>
                 <div className="score-numbers">
                     <p>{hustleTotalScore}</p>
-                    <p>{otherTotalScore}</p>
                 </div>
+                <div className="score-numbers"> 
+                    <p>{otherTotalScore}</p>
+                </div>   
                 <div className="team-name">
                     <p>Other Team</p>
                 </div>
@@ -27,12 +29,5 @@ function Scoreboard({hustleTotalScore, otherTotalScore}) {
 
 export default Scoreboard;
 
-
-
-
-/* 
-The goal here is to figure out props and create
-components for everything
-*/
 
 
