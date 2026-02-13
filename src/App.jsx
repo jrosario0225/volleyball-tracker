@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+
 import Scoreboard from './components/Scoreboard'
 
 function App() {
@@ -71,10 +72,10 @@ const otherTotalScore = otherEarned + hustleErrors
           {/* Putting Earned + Error side-by-side */}
           <div className="stats-row">
             <div className="stat-item">
-              <p>Hustle Earned: {hustleEarned} </p>
+              <p>Points earned: {hustleEarned} </p>
             </div>
             <div className="stat-item">
-              <p>Hustle Errors: {hustleErrors} </p>
+              <p>Errors made: {hustleErrors} </p>
             </div>
           </div>
 
@@ -95,10 +96,10 @@ const otherTotalScore = otherEarned + hustleErrors
 
           <div className="stats-row">
             <div className="stat-item">
-              <p>Other Earned: {otherEarned} </p>
+              <p>Points earned: {otherEarned} </p>
             </div>
             <div className="stat-item">
-              <p>Other Errors: {otherErrors} </p>
+              <p>Errors made: {otherErrors} </p>
             </div>
           </div>
 
