@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-
-
+import Scoreboard from './components/Scoreboard'
 
 function App() {
 
@@ -51,13 +50,15 @@ function App() {
     setOtherErrors(otherErrors - 1)
   }
 
-
+// props for Scoreboard.jsx
+const hustleTotalScore = hustleEarned + otherErrors
+const otherTotalScore = otherEarned + hustleErrors
 
   return (
     <div className="app">
 
       {/* Scoreboard at top */}
-      <div className="scoreboard">
+      {/* <div className="scoreboard">
         <div className="scores">
           <div className="team-score">
             <img src="/hustle-logo.jpeg" alt="Hustle logo" className="team-logo" />
@@ -67,7 +68,12 @@ function App() {
             <p>{otherEarned + hustleErrors}: Other Team</p>
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <Scoreboard
+      hustleTotalScore={hustleTotalScore}
+      otherTotalScore={otherTotalScore} 
+      />
 
       {/* Two-column layout */}
       <div className="teams-container">

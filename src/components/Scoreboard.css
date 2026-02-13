@@ -1,0 +1,39 @@
+/* Scoreboard styling */
+
+.scoreboard {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.scores {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.team-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.score-numbers {
+    display: flex;
+    gap: 40px;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.team-logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 10px;
+}
