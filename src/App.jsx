@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
+// component imports
 import Scoreboard from './components/Scoreboard'
 import TeamSection from './components/TeamSection'
 
@@ -58,66 +59,32 @@ const otherTotalScore = otherEarned + hustleErrors
 
   return (
     <div className="app">
-
+    
       <Scoreboard
       hustleTotalScore={hustleTotalScore}
       otherTotalScore={otherTotalScore} 
       />
 
-      {/* Two-column layout */}
+      {/* Hustle TeamSection*/}
       <div className="teams-container">
+        <TeamSection
+          earned={hustleEarned}
+          errors={hustleErrors}
+          onAddEarned={addHustleEarned}
+          onSubtractEarned={subtractHustleEarned}
+          onAddErrors={addHustleErrors}
+          onSubtractErrors={subtractHustleErrors}
+        />
+      </div>    
 
-        {/* Left column - HUSTLE */}
-        <div className="team-section">
 
-          {/* Putting Earned + Error side-by-side */}
-          <div className="stats-row">
-            <div className="stat-item">
-              <p>Points earned: {hustleEarned} </p>
-            </div>
-            <div className="stat-item">
-              <p>Errors made: {hustleErrors} </p>
-            </div>
-          </div>
 
-          <div className="buttons-row">
-            <div className="button-group">
-              <button onClick={subtractHustleEarned} className="button-subtract">-</button>
-              <button onClick={addHustleEarned} className="button-add">+</button>
-            </div>
-            <div className="button-group">
-              <button onClick={subtractHustleErrors} className="button-subtract">-</button>
-              <button onClick={addHustleErrors} className="button-add">+</button>
-            </div>
-          </div>
-        </div>
 
-        {/* Right Column - OTHER TEAM */}
-        <div className="team-section">
-
-          <div className="stats-row">
-            <div className="stat-item">
-              <p>Points earned: {otherEarned} </p>
-            </div>
-            <div className="stat-item">
-              <p>Errors made: {otherErrors} </p>
-            </div>
-          </div>
-
-          <div className="buttons-row">
-            <div className="button-group">
-              <button onClick={subtractOtherEarned} className="button-subtract">-</button>
-              <button onClick={addOtherEarned} className="button-add">+</button>
-            </div>
-            <div className="button-group">
-              <button onClick={subtractOtherErrors} className="button-subtract">-</button>
-              <button onClick={addOtherErrors} className="button-add">+</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
     </div>
+
+  
+  
+
   )
 }
 
