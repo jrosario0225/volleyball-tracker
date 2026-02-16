@@ -17,7 +17,6 @@
 .desktop-only {
   display: block;
 }
-
 .mobile-only {
   display: none;
 }
@@ -29,22 +28,7 @@
   .desktop-only {
     display: none;
   }
-
   .mobile-only {
     display: block;
-  }
-
-
-  /* TeamSection -- will delete later */
-  .teams-container {
-    flex-direction: column;
-  }
-
-  .team-section:first-child {
-    border-right: none;
-    border-bottom: 2px solid gray;
-    margin-top: 0;
-    margin-bottom: 0;
-
   }
 }

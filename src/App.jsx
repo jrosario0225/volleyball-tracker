@@ -79,6 +79,30 @@ function App() {
           otherTotalScore={otherTotalScore} />
       </div>
 
+      {/* Displaying TeamSection*/}
+      <div className="teams-container">
+        <div className="desktop-only">
+          
+          <TeamSectionDesktop 
+          earned={hustleEarned}
+          errors={hustleErrors}
+          onAddEarned={addHustleEarned}
+          onSubtractEarned={subtractHustleEarned}
+          onAddErrors={addHustleErrors}
+          onSubtractErrors={subtractHustleErrors}/>
+
+          <TeamSectionDesktop 
+          earned={otherEarned}
+          errors={otherErrors}
+          onAddEarned={addOtherEarned}
+          onSubtractEarned={subtractOtherEarned}
+          onAddErrors={addOtherErrors}
+          onSubtractErrors={subtractOtherErrors}
+          />
+
+        </div>
+      </div>
+
     
 
 
