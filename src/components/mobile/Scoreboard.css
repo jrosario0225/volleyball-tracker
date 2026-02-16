@@ -1,0 +1,35 @@
+/* MOBILE Scoreboard Styling */
+
+.scoreboard-mobile {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.score-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.team-name-mobile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.team-logo-mobile {
+    width: 40px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.score-number-mobile {
+    font-size: 48px;
+    font-weight: bold;
+}
