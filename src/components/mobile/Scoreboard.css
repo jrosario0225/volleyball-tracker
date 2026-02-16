@@ -35,3 +35,12 @@
     font-weight: bold;
     color: white;
 }
+
+.set-display-mobile {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    margin-top: -20px;
+}

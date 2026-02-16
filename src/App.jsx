@@ -88,7 +88,8 @@ function App() {
       <div className="mobile-only">
         <ScoreboardMobile
           hustleTotalScore={hustleTotalScore}
-          otherTotalScore={otherTotalScore} />
+          otherTotalScore={otherTotalScore}
+          currentSet={currentSet} />
       </div>
 
       {/* Displaying TeamSection*/}

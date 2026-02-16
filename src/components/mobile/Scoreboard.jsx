@@ -4,7 +4,7 @@ import "./Scoreboard.css";
 
 // MOBILE Scoreboard
 
-function Scoreboard({ hustleTotalScore, otherTotalScore }) {
+function Scoreboard({ hustleTotalScore, otherTotalScore, currentSet }) {
     return (
         <div className="scoreboard-mobile">
             <div className="score-row">
@@ -20,6 +20,10 @@ function Scoreboard({ hustleTotalScore, otherTotalScore }) {
                     <p>Other Team</p>
                 </div>
                 <p className="score-number-mobile">{otherTotalScore}</p>
+            </div>
+
+            <div className="set-display-mobile">
+                <p> Set {currentSet} </p>
             </div>
         </div>
 
