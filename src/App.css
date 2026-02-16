@@ -12,6 +12,14 @@
   flex-direction: column;
 }
 
+.set-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 20px;
+  margin-top: auto;
+}
+}
 
 /* By default, it shows the desktop version and hides the mobile */
 .desktop-only {

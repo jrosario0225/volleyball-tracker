@@ -68,6 +68,17 @@ function App() {
     }
   }
 
+  // functions for updating Set number
+  const nextSet = () => {
+    setCurrentSet(currentSet + 1)
+  }
+
+  const prevSet = () => {
+    if (currentSet > 1) {
+      setCurrentSet(currentSet -1)
+    }
+  }
+
   // props for Scoreboard.jsx
   const hustleTotalScore = hustleEarned + otherErrors
   const otherTotalScore = otherEarned + hustleErrors
@@ -144,7 +155,10 @@ function App() {
 
         </div>
       </div>
-
+      <div className="set-controls">
+        <button onClick={prevSet}>Previous Set</button>
+        <button onClick={nextSet}>Next Set</button>
+      </div>
 
     </div >
 
