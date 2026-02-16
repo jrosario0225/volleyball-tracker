@@ -1,7 +1,9 @@
 /* MOBILE TeamSection Styling */
 
-.team-container {
+.teams-container-mobile {
+    display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .team-section-mobile {

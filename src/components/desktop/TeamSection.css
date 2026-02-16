@@ -1,15 +1,9 @@
 /* Styling for DESKTOP TeamSection */
 
-.teams-container{
-    flex: 1;
+.teams-container-desktop {
     display: flex;
+    flex: 1;
     min-height: 0;
-}
-
-.teams-container .desktop-only{
-    display: flex;
-    flex: 1;
-    align-items: stretch;
 }
 
 .team-section {
@@ -20,9 +14,7 @@
     gap: 20px;
 }
 
-.team-section:first-child {
-    border-right: 2px solid gray;
-}
+
 
 /* Earned and Errors SIDE BY SIDE */
 .stat {

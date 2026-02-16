@@ -1,4 +1,4 @@
-/* Basic Styling */
+/* App Styling */
 
 * {
   margin: 0;
@@ -7,9 +7,9 @@
 }
 
 .app {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 
 
@@ -21,10 +21,8 @@
   display: none;
 }
 
-
 @media (max-width: 768px) {
   /* For mobile, hides the desktop version and shows the mobile version */
-
   .desktop-only {
     display: none;
   }

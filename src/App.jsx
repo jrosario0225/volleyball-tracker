@@ -80,35 +80,60 @@ function App() {
       </div>
 
       {/* Displaying TeamSection*/}
-      <div className="teams-container">
-        <div className="desktop-only">
-          
-          <TeamSectionDesktop 
-          earned={hustleEarned}
-          errors={hustleErrors}
-          onAddEarned={addHustleEarned}
-          onSubtractEarned={subtractHustleEarned}
-          onAddErrors={addHustleErrors}
-          onSubtractErrors={subtractHustleErrors}/>
 
-          <TeamSectionDesktop 
-          earned={otherEarned}
-          errors={otherErrors}
-          onAddEarned={addOtherEarned}
-          onSubtractEarned={subtractOtherEarned}
-          onAddErrors={addOtherErrors}
-          onSubtractErrors={subtractOtherErrors}
+      {/* Desktop */}
+      <div className="desktop-only">
+        <div className="teams-container-desktop">
+
+          <TeamSectionDesktop
+            earned={hustleEarned}
+            errors={hustleErrors}
+            onAddEarned={addHustleEarned}
+            onSubtractEarned={subtractHustleEarned}
+            onAddErrors={addHustleErrors}
+            onSubtractErrors={subtractHustleErrors} />
+
+          <TeamSectionDesktop
+            earned={otherEarned}
+            errors={otherErrors}
+            onAddEarned={addOtherEarned}
+            onSubtractEarned={subtractOtherEarned}
+            onAddErrors={addOtherErrors}
+            onSubtractErrors={subtractOtherErrors}
+          />
+        </div>
+
+      </div>
+
+      {/* Mobile */}
+      <div className="mobile-only">
+        <div className="teams-container-mobile">
+
+          <TeamSectionMobile
+            teamName="Hustle"
+            earned={hustleEarned}
+            errors={hustleErrors}
+            onAddEarned={addHustleEarned}
+            onSubtractEarned={subtractHustleEarned}
+            onAddErrors={addHustleErrors}
+            onSubtractErrors={subtractHustleErrors}
+          />
+
+          <TeamSectionMobile
+            teamName="Other Team"
+            earned={otherEarned}
+            errors={otherErrors}
+            onAddEarned={addOtherEarned}
+            onSubtractEarned={subtractOtherEarned}
+            onAddErrors={addOtherErrors}
+            onSubtractErrors={subtractOtherErrors}
           />
 
         </div>
       </div>
 
-    
 
-
-
-      
-    </div>
+    </div >
 
 
 
