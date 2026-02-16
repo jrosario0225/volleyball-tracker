@@ -14,6 +14,12 @@
     gap: 20px;
 }
 
+.team-section:first-child {
+    border-right: 2px solid gray;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 /* Earned and Errors SIDE BY SIDE */
 .stat {
     display: flex;
@@ -44,4 +50,21 @@
 
 .button-add {
     background-color: #333333
+}
+
+
+/* Button styling */
+
+button {
+    font-size: 20px;
+    padding: 15px 30px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
 }
