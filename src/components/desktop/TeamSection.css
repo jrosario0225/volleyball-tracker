@@ -15,7 +15,6 @@
 }
 
 
-
 /* Earned and Errors SIDE BY SIDE */
 .stat {
     display: flex;
@@ -63,4 +62,12 @@ button {
 
 button:active {
     transform: scale(0.95);
+}
+
+
+
+.desktop-only:has(.teams-container-desktop) {
+    flex: 1;
+    display: flex;
+    min-height: 0;
 }
