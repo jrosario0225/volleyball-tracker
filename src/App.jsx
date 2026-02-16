@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import './App.css'
 
-// component imports
-import Scoreboard from './components/desktop/Scoreboard'
+// DESKTOP component imports
+import ScoreboardDesktop from './components/desktop/Scoreboard'
 import TeamSection from './components/desktop/TeamSection'
+
+// MOBILE component imports
+import ScoreboardMobile from './components/mobile/Scoreboard'
 
 function App() {
 
@@ -53,17 +56,27 @@ function App() {
     setOtherErrors(otherErrors - 1)
   }
 
-// props for Scoreboard.jsx
-const hustleTotalScore = hustleEarned + otherErrors
-const otherTotalScore = otherEarned + hustleErrors
+  // props for Scoreboard.jsx
+  const hustleTotalScore = hustleEarned + otherErrors
+  const otherTotalScore = otherEarned + hustleErrors
 
   return (
     <div className="app">
-    
-      <Scoreboard
-      hustleTotalScore={hustleTotalScore}
-      otherTotalScore={otherTotalScore} 
-      />
+
+
+      {/* Displaying Scoreboard*/}
+      <div className="desktop-only">
+        <ScoreboardDesktop
+          hustleTotalScore={hustleTotalScore}
+          otherTotalScore={otherTotalScore}
+        />
+      </div>
+
+      <div className="mobile-only">
+        <ScoreboardMobile 
+        hustleTotalScore={hustleTotalScore}
+        otherTotalScore={otherTotalScore}/>
+      </div>
 
 
       <div className="teams-container">
@@ -76,7 +89,7 @@ const otherTotalScore = otherEarned + hustleErrors
           onSubtractErrors={subtractHustleErrors}
         />
 
-        <TeamSection 
+        <TeamSection
           earned={otherEarned}
           errors={otherErrors}
           onAddEarned={addOtherEarned}
@@ -84,11 +97,11 @@ const otherTotalScore = otherEarned + hustleErrors
           onAddErrors={addOtherErrors}
           onSubtractErrors={subtractOtherErrors}
         />
-      </div>    
+      </div>
     </div>
 
-  
-  
+
+
 
   )
 }

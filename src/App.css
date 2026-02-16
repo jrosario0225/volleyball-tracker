@@ -1,3 +1,5 @@
+/* Basic Styling */
+
 * {
   margin: 0;
   padding: 0;
@@ -10,10 +12,31 @@
   flex-direction: column;
 }
 
-/* Mobile Optimization */
+/* By default, it shows the desktop version and
+hides the mobile */
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
 
 @media (max-width: 768px) {
-  
+  /* For mobile, hides the desktop version and
+  shows the mobile version */
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+
+  /* TeamSection -- will delete later */
   .teams-container {
     flex-direction: column;
   }

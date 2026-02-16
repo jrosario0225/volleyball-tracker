@@ -21,6 +21,7 @@
     gap: 10px;
     font-size: 20px;
     font-weight: bold;
+    color: white;
 }
 
 .team-logo-mobile {
@@ -32,4 +33,5 @@
 .score-number-mobile {
     font-size: 48px;
     font-weight: bold;
+    color: white;
 }
