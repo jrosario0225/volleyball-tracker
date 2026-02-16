@@ -3,10 +3,11 @@ import './App.css'
 
 // DESKTOP component imports
 import ScoreboardDesktop from './components/desktop/Scoreboard'
-import TeamSection from './components/desktop/TeamSection'
+import TeamSectionDesktop from './components/desktop/TeamSection'
 
 // MOBILE component imports
 import ScoreboardMobile from './components/mobile/Scoreboard'
+import TeamSectionMobile from "./components/mobile/TeamSection"
 
 function App() {
 
@@ -73,31 +74,63 @@ function App() {
       </div>
 
       <div className="mobile-only">
-        <ScoreboardMobile 
-        hustleTotalScore={hustleTotalScore}
-        otherTotalScore={otherTotalScore}/>
+        <ScoreboardMobile
+          hustleTotalScore={hustleTotalScore}
+          otherTotalScore={otherTotalScore} />
       </div>
 
+      {/* Displaying TeamSection */}
+      <div className="desktop-only">
+        <div className="teams-container">
+          <TeamSectionDesktop
+            earned={hustleEarned}
+            errors={hustleErrors}
+            onAddEarned={addHustleEarned}
+            onSubtractEarned={subtractHustleEarned}
+            onAddErrors={addHustleErrors}
+            onSubtractErrors={subtractHustleErrors}
+          />
 
-      <div className="teams-container">
-        <TeamSection
+          <TeamSectionDesktop
+            earned={otherEarned}
+            errors={otherErrors}
+            onAddEarned={addOtherEarned}
+            onSubtractEarned={subtractOtherEarned}
+            onAddErrors={addOtherErrors}
+            onSubtractErrors={subtractOtherErrors}
+          />
+        </div>
+      </div>
+
+      <div className="mobile-only">
+        <div className="teams-container">
+          <TeamSectionMobile 
+          teamName="Hustle"
           earned={hustleEarned}
           errors={hustleErrors}
           onAddEarned={addHustleEarned}
           onSubtractEarned={subtractHustleEarned}
           onAddErrors={addHustleErrors}
           onSubtractErrors={subtractHustleErrors}
-        />
+          />
 
-        <TeamSection
+          <TeamSectionMobile 
+          teamName="Other Team"
           earned={otherEarned}
           errors={otherErrors}
           onAddEarned={addOtherEarned}
           onSubtractEarned={subtractOtherEarned}
           onAddErrors={addOtherErrors}
-          onSubtractErrors={subtractOtherErrors}
-        />
+          onsubtracterrors={subtractOtherErrors}
+          />
+        
+
+        </div>
       </div>
+
+
+
+      
     </div>
 
 
