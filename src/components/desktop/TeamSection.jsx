@@ -1,6 +1,10 @@
 import React from 'react';
 import "./TeamSection.css";
 
+
+// DESKTOP TeamSection
+
+
 function TeamSection({ earned, errors,
     onAddEarned, onSubtractEarned,
     onAddErrors, onSubtractErrors

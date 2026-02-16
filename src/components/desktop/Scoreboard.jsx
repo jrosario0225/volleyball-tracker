@@ -1,6 +1,8 @@
 import React from 'react'
 import "./Scoreboard.css"
 
+// DESKTOP Scoreboard
+
 /* props are hustleTotalScore and otherTotalScore
 found in App.css */
 
