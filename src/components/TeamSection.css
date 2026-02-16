@@ -13,3 +13,35 @@
     flex-direction: column;
     gap: 20px;
 }
+
+/* Earned and Errors SIDE BY SIDE */
+.stat {
+    display: flex;
+    justify-content: space-around;
+}
+
+.stat-item p {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/*Buttons side by side and aligned below stats */
+.stat-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.button-subtract {
+    background-color: #555555;
+}
+
+.button-add {
+    background-color: #333333
+}
