@@ -67,6 +67,7 @@ const otherTotalScore = otherEarned + hustleErrors
 
       {/* Hustle TeamSection*/}
       <div className="teams-container">
+
         <TeamSection
           earned={hustleEarned}
           errors={hustleErrors}
@@ -74,6 +75,15 @@ const otherTotalScore = otherEarned + hustleErrors
           onSubtractEarned={subtractHustleEarned}
           onAddErrors={addHustleErrors}
           onSubtractErrors={subtractHustleErrors}
+        />
+
+        <TeamSection 
+          earned={otherEarned}
+          errors={otherErrors}
+          onAddEarned={addOtherEarned}
+          onSubtractEarned={subtractOtherEarned}
+          onAddErrors={addOtherErrors}
+          onSubtractErrors={subtractOtherErrors}
         />
       </div>    
 

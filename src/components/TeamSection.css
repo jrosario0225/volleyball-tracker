@@ -5,3 +5,11 @@
     flex: 1;
     width: 100%;
 }
+
+.team-section {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
