@@ -27,7 +27,9 @@ function App() {
   }
 
   const subtractHustleEarned = () => {
-    setHustleEarned(hustleEarned - 1)
+    if (hustleEarned > 0) {
+      setHustleEarned(hustleEarned - 1)
+    }
   }
 
   // Hustle ERRORS
@@ -36,7 +38,9 @@ function App() {
   }
 
   const subtractHustleErrors = () => {
-    setHustleErrors(hustleErrors - 1)
+    if (hustleErrors > 0) {
+      setHustleErrors(hustleErrors - 1)
+    }
   }
 
   // Other EARNED
@@ -45,7 +49,9 @@ function App() {
   }
 
   const subtractOtherEarned = () => {
-    setOtherEarned(otherEarned - 1)
+    if (otherEarned > 0) {
+      setOtherEarned(otherEarned - 1)
+    }
   }
 
   // other ERROR
@@ -54,7 +60,9 @@ function App() {
   }
 
   const subtractOtherErrors = () => {
-    setOtherErrors(otherErrors - 1)
+    if (otherErrors > 0) {
+      setOtherErrors(otherErrors - 1)
+    }
   }
 
   // props for Scoreboard.jsx
