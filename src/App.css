@@ -7,13 +7,13 @@
 }
 
 .app {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
-/* By default, it shows the desktop version and
-hides the mobile */
+
+/* By default, it shows the desktop version and hides the mobile */
 .desktop-only {
   display: block;
 }
@@ -24,8 +24,7 @@ hides the mobile */
 
 
 @media (max-width: 768px) {
-  /* For mobile, hides the desktop version and
-  shows the mobile version */
+  /* For mobile, hides the desktop version and shows the mobile version */
 
   .desktop-only {
     display: none;

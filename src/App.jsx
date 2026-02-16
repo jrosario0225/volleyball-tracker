@@ -79,54 +79,7 @@ function App() {
           otherTotalScore={otherTotalScore} />
       </div>
 
-      {/* Displaying TeamSection */}
-      <div className="desktop-only">
-        <div className="teams-container">
-          <TeamSectionDesktop
-            earned={hustleEarned}
-            errors={hustleErrors}
-            onAddEarned={addHustleEarned}
-            onSubtractEarned={subtractHustleEarned}
-            onAddErrors={addHustleErrors}
-            onSubtractErrors={subtractHustleErrors}
-          />
-
-          <TeamSectionDesktop
-            earned={otherEarned}
-            errors={otherErrors}
-            onAddEarned={addOtherEarned}
-            onSubtractEarned={subtractOtherEarned}
-            onAddErrors={addOtherErrors}
-            onSubtractErrors={subtractOtherErrors}
-          />
-        </div>
-      </div>
-
-      <div className="mobile-only">
-        <div className="teams-container">
-          <TeamSectionMobile 
-          teamName="Hustle"
-          earned={hustleEarned}
-          errors={hustleErrors}
-          onAddEarned={addHustleEarned}
-          onSubtractEarned={subtractHustleEarned}
-          onAddErrors={addHustleErrors}
-          onSubtractErrors={subtractHustleErrors}
-          />
-
-          <TeamSectionMobile 
-          teamName="Other Team"
-          earned={otherEarned}
-          errors={otherErrors}
-          onAddEarned={addOtherEarned}
-          onSubtractEarned={subtractOtherEarned}
-          onAddErrors={addOtherErrors}
-          onsubtracterrors={subtractOtherErrors}
-          />
-        
-
-        </div>
-      </div>
+    
 
 
 
