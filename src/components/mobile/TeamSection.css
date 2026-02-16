@@ -14,7 +14,6 @@
     margin-left: 15px;
     margin-right: 15px;
     margin-bottom: 5px;
-  
 }
 
 
@@ -31,15 +30,22 @@
     font-size: 18px;
     font-weight: bold;
     color: white;
-    gap: 15px;
 }
 
-.button-subtract {
-    background-color: #555555;
-    color: white;
+.stat-label {
+    width: 100px;
 }
 
-.button-add {
-    background-color: #333333;
-    color: white;
+.stat-number {
+    width: 40px;
+    text-align: center;
 }
+
+.button-group-mobile {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+/* Button styling in DESKTOP TeamSection.css */
+
