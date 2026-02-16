@@ -23,7 +23,7 @@ function TeamSection({teamName,
             </div>
 
             <div className="stat-row-mobile">
-                <p>Error</p>
+                <p>Errors</p>
                 <p>{errors}</p>
                 <button onClick={onSubtractErrors} className="button-subtract">-</button>
                 <button onClick={onAddErrors} className="button-add">+</button>
