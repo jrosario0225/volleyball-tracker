@@ -10,5 +10,19 @@
   flex-direction: column;
 }
 
+/* Mobile Optimization */
 
+@media (max-width: 768px) {
+  
+  .teams-container {
+    flex-direction: column;
+  }
 
+  .team-section:first-child {
+    border-right: none;
+    border-bottom: 2px solid gray;
+    margin-top: 0;
+    margin-bottom: 0;
+
+  }
+}

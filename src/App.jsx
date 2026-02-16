@@ -2,8 +2,8 @@ import { useState } from 'react'
 import './App.css'
 
 // component imports
-import Scoreboard from './components/Scoreboard'
-import TeamSection from './components/TeamSection'
+import Scoreboard from './components/desktop/Scoreboard'
+import TeamSection from './components/desktop/TeamSection'
 
 function App() {
 
@@ -65,9 +65,8 @@ const otherTotalScore = otherEarned + hustleErrors
       otherTotalScore={otherTotalScore} 
       />
 
-      {/* Hustle TeamSection*/}
-      <div className="teams-container">
 
+      <div className="teams-container">
         <TeamSection
           earned={hustleEarned}
           errors={hustleErrors}
@@ -86,10 +85,6 @@ const otherTotalScore = otherEarned + hustleErrors
           onSubtractErrors={subtractOtherErrors}
         />
       </div>    
-
-
-
-
     </div>
 
   
