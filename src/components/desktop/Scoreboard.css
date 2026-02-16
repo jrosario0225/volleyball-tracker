@@ -2,7 +2,7 @@
 
 .scoreboard {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 20px;
     justify-content: center;
     background-color: #1a1a1a;
@@ -50,4 +50,11 @@
     height: auto;
     margin-right: 10px;
     border-radius: 10px;
+}
+
+.set-display {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: -20px;
 }

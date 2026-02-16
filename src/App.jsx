@@ -18,9 +18,12 @@ function App() {
   const [otherEarned, setOtherEarned] = useState(0)
   const [otherErrors, setOtherErrors] = useState(0)
 
+  
+  // state for Set
+  const [currentSet, setCurrentSet] = useState(1)
+
 
   // All functions to update points earned and errors
-
   // Hustle EARNED
   const addHustleEarned = () => {
     setHustleEarned(hustleEarned + 1)
@@ -78,6 +81,7 @@ function App() {
         <ScoreboardDesktop
           hustleTotalScore={hustleTotalScore}
           otherTotalScore={otherTotalScore}
+          currentSet={currentSet}
         />
       </div>
 

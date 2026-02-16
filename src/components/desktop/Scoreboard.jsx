@@ -3,10 +3,13 @@ import "./Scoreboard.css"
 
 // DESKTOP Scoreboard
 
-/* props are hustleTotalScore and otherTotalScore
+/* props: 
+- hustleTotalScore 
+- otherTotalScore
+- currentSet
 found in App.css */
 
-function Scoreboard({hustleTotalScore, otherTotalScore}) {
+function Scoreboard({ hustleTotalScore, otherTotalScore, currentSet }) {
     return (
         <div className="scoreboard">
             <div className="scores">
@@ -17,12 +20,15 @@ function Scoreboard({hustleTotalScore, otherTotalScore}) {
                 <div className="score-numbers">
                     <p>{hustleTotalScore}</p>
                 </div>
-                <div className="score-numbers"> 
+                <div className="score-numbers">
                     <p>{otherTotalScore}</p>
-                </div>   
+                </div>
                 <div className="team-name">
                     <p>Other Team</p>
                 </div>
+            </div>
+            <div className="set-display">
+                <p>Set {currentSet}</p>
             </div>
         </div>
 
