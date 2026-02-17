@@ -11,6 +11,8 @@ import TeamSectionMobile from "./components/mobile/TeamSection"
 
 function App() {
 
+  /* STATES */
+
   // for Hustle's earned points and errors
   const [hustleEarned, setHustleEarned] = useState(0)
   const [hustleErrors, setHustleErrors] = useState(0)
@@ -28,8 +30,9 @@ function App() {
   const [pendingAction, setPendingAction] = useState(null) // "prev" or "next"
 
 
+  /* FUNCTIONS */
 
-  // All functions to update points earned and errors
+  // All functions to update points earned and errors for specific teams
   // Hustle EARNED
   const addHustleEarned = () => {
     setHustleEarned(hustleEarned + 1)
@@ -74,7 +77,8 @@ function App() {
     }
   }
 
-  // functions for updating Set number
+
+  // functions for updating Set number and prompting Set Modal
   const nextSet = () => {
     setCurrentSet(currentSet + 1)
   }
@@ -84,6 +88,19 @@ function App() {
       setCurrentSet(currentSet -1)
     }
   }
+
+
+  // functions to confirm or cancel Set change (move onto the next set?)
+  const confirmSetChange = () => {
+      // this is left blank intentionally 
+  }
+
+  const cancelSetChange = () => {
+    setShowModal(false)
+    setPendingAction(null)
+  }
+
+  /* PROPS */
 
   // props for Scoreboard.jsx
   const hustleTotalScore = hustleEarned + otherErrors
@@ -96,7 +113,7 @@ function App() {
   return (
     <div className="app">
 
-      {/* Displaying Scoreboard*/}
+      {/* Displaying Scoreboard */}
       <div className="desktop-only">
         <ScoreboardDesktop
           hustleTotalScore={hustleTotalScore}
