@@ -19,8 +19,14 @@ function App() {
   const [otherErrors, setOtherErrors] = useState(0)
 
   
-  // state for Set
+  // for updating Set #
   const [currentSet, setCurrentSet] = useState(1)
+
+  // for set tracking and modal
+  const [setHistory, setSetHistory] = useState([])
+  const [showModal, setShowModal] = useState(false)
+  const [pendingAction, setPendingAction] = useState(null) // "prev" or "next"
+
 
 
   // All functions to update points earned and errors
@@ -83,9 +89,12 @@ function App() {
   const hustleTotalScore = hustleEarned + otherErrors
   const otherTotalScore = otherEarned + hustleErrors
 
+
+
+
+
   return (
     <div className="app">
-
 
       {/* Displaying Scoreboard*/}
       <div className="desktop-only">
