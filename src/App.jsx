@@ -80,12 +80,14 @@ function App() {
 
   // functions for updating Set number and prompting Set Modal
   const nextSet = () => {
-    setCurrentSet(currentSet + 1)
+    setPendingAction('next')
+    setShowModal(true)
   }
 
   const prevSet = () => {
     if (currentSet > 1) {
-      setCurrentSet(currentSet -1)
+      setPendingAction('prev')
+      setShowModal(true)
     }
   }
 
