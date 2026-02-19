@@ -9,6 +9,9 @@ import TeamSectionDesktop from './components/desktop/TeamSection'
 import ScoreboardMobile from './components/mobile/Scoreboard'
 import TeamSectionMobile from "./components/mobile/TeamSection"
 
+// SHARED component import
+import SetModal from "./components/shared/SetModal"
+
 function App() {
 
   /* STATES */
@@ -20,12 +23,11 @@ function App() {
   const [otherEarned, setOtherEarned] = useState(0)
   const [otherErrors, setOtherErrors] = useState(0)
 
-  
+
   // for updating Set #
   const [currentSet, setCurrentSet] = useState(1)
 
   // for set tracking and modal
-  const [setHistory, setSetHistory] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [pendingAction, setPendingAction] = useState(null) // "prev" or "next"
 
@@ -91,10 +93,34 @@ function App() {
     }
   }
 
+  const resetScore = () => {
+    setHustleEarned(0)
+    setHustleErrors(0)
+    setOtherEarned(0)
+    setOtherErrors(0)
+  }
+
 
   // functions to confirm or cancel Set change (move onto the next set?)
   const confirmSetChange = () => {
-      // this is left blank intentionally 
+    if (pendingAction === "next") {
+      // Move to the next set
+      setCurrentSet(currentSet + 1)
+
+      //Reset scores to 0-0
+      resetScore()
+    }
+
+    else if (pendingAction === "prev") {
+      if (currentSet > 1) {
+        setCurrentSet(currentSet - 1)
+      }
+
+      //Reset scores to 0-0
+      resetScore()
+    }
+    setShowModal(false)
+    setPendignAction(null)
   }
 
   const cancelSetChange = () => {
@@ -188,6 +214,15 @@ function App() {
         <button onClick={nextSet}>Next Set</button>
       </div>
 
+      {/* setModal */}
+
+      <SetModal
+        showModal={showModal}
+        pendingAction={pendingAction}
+        currentSet={currentSet}
+        onConfirm={confirmSetChange}
+        onCancel={cancelSetChange}
+      />
     </div >
 
 
