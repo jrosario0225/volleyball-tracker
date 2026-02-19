@@ -93,6 +93,7 @@ function App() {
     }
   }
 
+  // function to reset the score back to 0-0
   const resetScore = () => {
     setHustleEarned(0)
     setHustleErrors(0)
@@ -120,7 +121,7 @@ function App() {
       resetScore()
     }
     setShowModal(false)
-    setPendignAction(null)
+    setPendingAction(null)
   }
 
   const cancelSetChange = () => {
