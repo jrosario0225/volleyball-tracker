@@ -19,9 +19,57 @@ function App() {
   // for Hustle's earned points and errors
   const [hustleEarned, setHustleEarned] = useState(0)
   const [hustleErrors, setHustleErrors] = useState(0)
+
+  // Detailed stats for Hustle
+  const [hustleEarnedStats, setHustleEarnedStats] = useState({
+    kill: 0,
+    roll: 0,
+    tip: 0,
+    tool: 0,
+    block: 0,
+    overpassKill: 0,
+    ace: 0,
+    setterDump: 0
+  })
+
+  const [hustleErrorStats, setHustleErrorStats] = useState({
+    serveError: 0,
+    attackError: 0,
+    shank: 0,
+    doubleTouch: 0,
+    antenna: 0,
+    lineFault: 0,
+    netTouch: 0
+  })
+
+
   // for other team's earned points and errors
   const [otherEarned, setOtherEarned] = useState(0)
   const [otherErrors, setOtherErrors] = useState(0)
+
+  // Detailed stats for Other Team
+   const [otherEarnedStats, setOtherEarnedStats] = useState({
+    kill: 0,
+    roll: 0,
+    tip: 0,
+    tool: 0,
+    block: 0,
+    overpassKill: 0,
+    ace: 0,
+    setterDump: 0
+  })
+
+  const [otherErrorStats, setOtherErrorStats] = useState({
+    serveError: 0,
+    attackError: 0,
+    shank: 0,
+    doubleTouch: 0,
+    antenna: 0,
+    lineFault: 0,
+    netTouch: 0
+  })
+
+
 
 
   // for updating Set #
@@ -31,29 +79,48 @@ function App() {
   const [showModal, setShowModal] = useState(false)
   const [pendingAction, setPendingAction] = useState(null) // "prev" or "next"
 
+  // for stat selection modal
+  const [showStatModal, setShowStatModal] = useState(false)
+  const [statModalType, setStatModalType] = useState(null) // "earned" or "error"
+  const [statModalTeam, setStatModalTeam] = useState(null) // "hustle" or "other"
+  const [statModalAction, setStatModalAction] = useState(null) // "add" or "subtact"
+
+
 
   /* FUNCTIONS */
 
   // All functions to update points earned and errors for specific teams
   // Hustle EARNED
   const addHustleEarned = () => {
-    setHustleEarned(hustleEarned + 1)
+    setStatModalTeam('hustle')
+    setStatModalType('earned')
+    setStatModalAction('add')
+    setShowStatModal(true)
   }
 
   const subtractHustleEarned = () => {
     if (hustleEarned > 0) {
-      setHustleEarned(hustleEarned - 1)
+      setStatModalTeam('hustle')
+      setStatModalType('earned')
+      setStatModalAction('subtract')
+      setShowStatModal(true)
     }
   }
 
   // Hustle ERRORS
   const addHustleErrors = () => {
-    setHustleErrors(hustleErrors + 1)
+    setStatModalTeam('hustle')
+    setStatModalType('error')
+    setStatModalAction('add')
+    setShowStatModal(true)
   }
 
   const subtractHustleErrors = () => {
     if (hustleErrors > 0) {
-      setHustleErrors(hustleErrors - 1)
+      setStatModalTeam('hustle')
+      setStatModalType('error')
+      setStatModalAction('subtract')
+      setShowStatModal(true)
     }
   }
 
