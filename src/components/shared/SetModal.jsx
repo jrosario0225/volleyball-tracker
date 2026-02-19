@@ -13,10 +13,10 @@ function SetModal({ showModal, pendingAction, currentSet, onConfirm, onCancel })
                 <h2>Move on to Set {targetSet}?</h2>
                 <div className="modal-warning">
                     <p> 
-                        📸 MAKE SURE TO TAKE A SCREENSHOT! 
+                        📸 TAKE A SCREENSHOT! 
                     </p>
                     <p>
-                        Current scores will reset to 0-0 
+                        SCORES and STATS will reset to 0-0 
                     </p>
                 </div>
 
