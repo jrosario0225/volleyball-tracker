@@ -13,10 +13,10 @@ function TeamSection({ earned, errors,
         <div className="team-section">
             <div className="stat">
                 <div className="stat-item">
-                    <p>Points earned: {earned}</p>
+                    <p>✅ Points earned: {earned}</p>
                 </div>
                 <div className="stat-item">
-                    <p>Errors made: {errors}</p>
+                    <p>❌ Errors made: {errors}</p>
                 </div>
             </div>
 

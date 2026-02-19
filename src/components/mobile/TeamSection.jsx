@@ -16,7 +16,7 @@ function TeamSection({ teamName,
                 <h2>{teamName}</h2>
             </div>
             <div className="stat-row-mobile">
-                <p className="stat-label">Earned</p>
+                <p className="stat-label">✅ Earned</p>
                 <p className="stat-number">{earned}</p>
                 <div className="button-group-mobile">
                     <button onClick={onSubtractEarned} className="button-subtract">-</button>
@@ -25,7 +25,7 @@ function TeamSection({ teamName,
             </div>
 
             <div className="stat-row-mobile">
-                <p className="stat-label">Errors</p>
+                <p className="stat-label">❌ Errors</p>
                 <p className="stat-number">{errors}</p>
                 <div className="button-group-mobile">
                     <button onClick={onSubtractErrors} className="button-subtract">-</button>
