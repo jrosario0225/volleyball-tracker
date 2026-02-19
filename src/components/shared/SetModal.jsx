@@ -10,12 +10,15 @@ function SetModal({ showModal, pendingAction, currentSet, onConfirm, onCancel })
     return (
         <div className="modal-overlay" onClick={onCancel}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <h2>Are you sure?</h2>
-                <p> Do you want to move to Set {targetSet}? </p>
-
-                <p className="modal-warning">
-                    Current scores will be saved and reset to 0-0
-                </p>
+                <h2>Move on to Set {targetSet}?</h2>
+                <div className="modal-warning">
+                    <p> 
+                        📸 MAKE SURE TO TAKE A SCREENSHOT! 
+                    </p>
+                    <p>
+                        Current scores will reset to 0-0 
+                    </p>
+                </div>
 
                 <div className="modal-buttons">
                     <button onClick={onCancel} className="modal-cancel">Cancel</button>
@@ -30,3 +33,5 @@ function SetModal({ showModal, pendingAction, currentSet, onConfirm, onCancel })
 }
 
 export default SetModal;
+
+
