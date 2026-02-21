@@ -12,65 +12,19 @@ import TeamSectionMobile from "./components/mobile/TeamSection"
 // SHARED component import
 import SetModal from "./components/shared/SetModal"
 
+// hook import
+import { useStatTracking } from "./hooks/useStatTracking"
+
+// StatModal import
+import StatModal from './components/shared/StatModal'
+
 function App() {
 
   /* STATES */
 
-  // for Hustle's earned points and errors
-  const [hustleEarned, setHustleEarned] = useState(0)
-  const [hustleErrors, setHustleErrors] = useState(0)
+  // importing state hook
 
-  // Detailed stats for Hustle
-  const [hustleEarnedStats, setHustleEarnedStats] = useState({
-    kill: 0,
-    roll: 0,
-    tip: 0,
-    tool: 0,
-    block: 0,
-    overpassKill: 0,
-    ace: 0,
-    setterDump: 0
-  })
-
-  const [hustleErrorStats, setHustleErrorStats] = useState({
-    serveError: 0,
-    attackError: 0,
-    shank: 0,
-    doubleTouch: 0,
-    antenna: 0,
-    lineFault: 0,
-    netTouch: 0
-  })
-
-
-  // for other team's earned points and errors
-  const [otherEarned, setOtherEarned] = useState(0)
-  const [otherErrors, setOtherErrors] = useState(0)
-
-  // Detailed stats for Other Team
-   const [otherEarnedStats, setOtherEarnedStats] = useState({
-    kill: 0,
-    roll: 0,
-    tip: 0,
-    tool: 0,
-    block: 0,
-    overpassKill: 0,
-    ace: 0,
-    setterDump: 0
-  })
-
-  const [otherErrorStats, setOtherErrorStats] = useState({
-    serveError: 0,
-    attackError: 0,
-    shank: 0,
-    doubleTouch: 0,
-    antenna: 0,
-    lineFault: 0,
-    netTouch: 0
-  })
-
-
-
+  const stats = useStatTracking()
 
   // for updating Set #
   const [currentSet, setCurrentSet] = useState(1)
@@ -99,11 +53,8 @@ function App() {
   }
 
   const subtractHustleEarned = () => {
-    if (hustleEarned > 0) {
-      setStatModalTeam('hustle')
-      setStatModalType('earned')
-      setStatModalAction('subtract')
-      setShowStatModal(true)
+    if (stats.hustleEarned > 0) {
+      stats.subtractStat('hustle', 'earned')
     }
   }
 
@@ -116,38 +67,41 @@ function App() {
   }
 
   const subtractHustleErrors = () => {
-    if (hustleErrors > 0) {
-      setStatModalTeam('hustle')
-      setStatModalType('error')
-      setStatModalAction('subtract')
-      setShowStatModal(true)
+    if (stats.hustleErrors > 0) {
+      stats.subtractStat('hustle', 'error')
     }
   }
 
   // Other EARNED
   const addOtherEarned = () => {
-    setOtherEarned(otherEarned + 1)
+    setStatModalTeam('other')
+    setStatModalType('earned')
+    setStatModalAction('add')
+    setShowStatModal(true)
   }
 
   const subtractOtherEarned = () => {
-    if (otherEarned > 0) {
-      setOtherEarned(otherEarned - 1)
+    if (stats.otherEarned > 0) {
+      stats.subtractStat('other', 'earned')
     }
   }
 
   // other ERROR
   const addOtherErrors = () => {
-    setOtherErrors(otherErrors + 1)
+    setStatModalTeam('other')
+    setStatModalType('error')
+    setStatModalAction('add')
+    setShowStatModal(true)
   }
 
   const subtractOtherErrors = () => {
-    if (otherErrors > 0) {
-      setOtherErrors(otherErrors - 1)
+    if (stats.otherErrors > 0) {
+      stats.subtractStat('other', 'error')
     }
   }
 
 
-  // functions for updating Set number and prompting Set Modal
+  // functions for updating SET number and prompting Set Modal
   const nextSet = () => {
     setPendingAction('next')
     setShowModal(true)
@@ -160,12 +114,9 @@ function App() {
     }
   }
 
-  // function to reset the score back to 0-0
+  // function to RESET the score back to 0-0
   const resetScore = () => {
-    setHustleEarned(0)
-    setHustleErrors(0)
-    setOtherEarned(0)
-    setOtherErrors(0)
+    stats.resetAllStats()
   }
 
 
@@ -196,13 +147,22 @@ function App() {
     setPendingAction(null)
   }
 
+
+  const handleSelectStat = (statKey) => {
+    stats.addStat(statModalTeam, statModalType, statKey)
+    setShowStatModal(false)
+    setStatModalTeam(null)
+    setStatModalType(null)
+  }
+
+
+
+
   /* PROPS */
 
   // props for Scoreboard.jsx
-  const hustleTotalScore = hustleEarned + otherErrors
-  const otherTotalScore = otherEarned + hustleErrors
-
-
+  const hustleTotalScore = stats.hustleEarned + stats.otherErrors
+  const otherTotalScore = stats.otherEarned + stats.hustleErrors
 
 
 
@@ -232,16 +192,16 @@ function App() {
         <div className="teams-container-desktop">
 
           <TeamSectionDesktop
-            earned={hustleEarned}
-            errors={hustleErrors}
+            earned={stats.hustleEarned}
+            errors={stats.hustleErrors}
             onAddEarned={addHustleEarned}
             onSubtractEarned={subtractHustleEarned}
             onAddErrors={addHustleErrors}
             onSubtractErrors={subtractHustleErrors} />
 
           <TeamSectionDesktop
-            earned={otherEarned}
-            errors={otherErrors}
+            earned={stats.otherEarned}
+            errors={stats.otherErrors}
             onAddEarned={addOtherEarned}
             onSubtractEarned={subtractOtherEarned}
             onAddErrors={addOtherErrors}
@@ -250,15 +210,15 @@ function App() {
         </div>
 
       </div>
-
+ 
       {/* Mobile */}
       <div className="mobile-only">
         <div className="teams-container-mobile">
 
           <TeamSectionMobile
             teamName="Hustle"
-            earned={hustleEarned}
-            errors={hustleErrors}
+            earned={stats.hustleEarned}
+            errors={stats.hustleErrors}
             onAddEarned={addHustleEarned}
             onSubtractEarned={subtractHustleEarned}
             onAddErrors={addHustleErrors}
@@ -267,8 +227,8 @@ function App() {
 
           <TeamSectionMobile
             teamName="Other Team"
-            earned={otherEarned}
-            errors={otherErrors}
+            earned={stats.otherEarned}
+            errors={stats.otherErrors}
             onAddEarned={addOtherEarned}
             onSubtractEarned={subtractOtherEarned}
             onAddErrors={addOtherErrors}
@@ -291,11 +251,18 @@ function App() {
         onConfirm={confirmSetChange}
         onCancel={cancelSetChange}
       />
-    </div >
+
+      <StatModal 
+      showStatModal={showStatModal}
+      statModalType={statModalType}
+      statModalTeam={statModalTeam}
+      onSelectStat={handleSelectStat}
+      onCancel={() => setShowStatModal(false)}
+      />
 
 
 
-
+    </div>
   )
 }
 

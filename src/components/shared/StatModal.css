@@ -1,0 +1,103 @@
+/* Style for StatModal */
+
+.stat-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.stat-modal-content {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 3px solid #555;
+}
+
+.stat-modal-content h2 {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 10px
+}
+
+.stat-modal-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.stat-options-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.stat-option-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.stat-option-button {
+    padding: 12px 20px;
+    max-width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #555;
+    background-color: #3a3a3a;
+    color: white;
+    transition: all 0.2s;
+}
+
+.stat-option-button:hover {
+    background-color: #4a4a4a;
+    border-color: #777;
+}
+
+.stat-option-button:active {
+    transform: scale(0.95);
+}
+
+.stat-modal-cancel {
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    background-color: #555;
+    color: white;
+    margin-left: auto;
+    display: block;
+}
+
+.stat-modal-cancel:hover {
+    background-color: #666;
+}
+
+
+/* Changes border of content depending on earned or error */
+
+.stat-modal-content[data-type="earned"] {
+    border-color: #4CAF50;
+}
+
+.stat-modal-content[data-type="error"] {
+    border-color: #f44336;
+}

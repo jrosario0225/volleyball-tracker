@@ -67,7 +67,7 @@ export function useStatTracking() {
     const otherErrors = Object.values(otherErrorStats).reduce((sum, val) => sum + val, 0)
 
 
-    /* Function to add a stat */
+    /* Function to ADD a stat */
     const addStat = (team, type, statKey) => {
         if (team === "hustle" && type === "earned") {
             setHustleEarnedStats(prev => ({...prev, [statKey]: prev[statKey] + 1}))
@@ -88,8 +88,107 @@ export function useStatTracking() {
 
     }
 
+    /* Function to SUBTRACT the most recent stat */
+    const subtractStat = (team, type) => {
+        if (team === "hustle" && type === "earned" && hustleEarnedHistory.length > 0) {
+            const lastStat = hustleEarnedHistory[hustleEarnedHistory.length - 1]
+            setHustleEarnedStats(prev => ({...prev, [lastStat]: prev[lastStat] - 1}))
+            setHustleEarnedHistory(prev => prev.slice(0, -1)) 
+        }
+        else if (team === "hustle" && type === "error" && hustleErrorHistory.length > 0) {
+            const lastStat = hustleErrorHistory[hustleErrorHistory.length - 1]
+            setHustleErrorStats(prev => ({...prev, [lastStat]: prev[lastStat] - 1}))
+            setHustleErrorHistory(prev => prev.slice(0, -1))
+        }
+        else if (team === "other" && type === "earned" && otherEarnedHistory.length > 0) {
+            const lastStat = otherEarnedHistory[otherEarnedHistory.length - 1]
+            setOtherEarnedStats(prev => ({...prev, [lastStat]: prev[lastStat] - 1}))
+            setOtherEarnedHistory(prev => prev.slice(0, -1))
+        }
+        else if (team === "other" && type === "error" && otherErrorHistory.length > 0) {
+            const lastStat = otherErrorHistory[otherErrorHistory.length - 1]
+            setOtherErrorStats(prev => ({...prev, [lastStat]: prev[lastStat] - 1}))
+            setOtherErrorHistory(prev => prev.slice(0, -1))
+        }
+
+    }
+
+    /* Functions to reset all stats back to 0 */
+
+    const resetAllStats = () => {
+        // reset Hustle Earned stats
+        setHustleEarnedStats({
+        kill: 0,
+        roll: 0,
+        tip: 0,
+        tool: 0,
+        block: 0,
+        overpassKill: 0,
+        ace: 0,
+        setterDump: 0
+        })
+
+        // reset Hustle Errors stats
+        setHustleErrorStats({
+        serveError: 0,
+        attackError: 0,
+        shank: 0,
+        doubleTouch: 0,
+        antenna: 0,
+        lineFault: 0,
+        netTouch: 0
+        })
+        
+        // reset Other Earned stats
+        setOtherEarnedStats({
+        kill: 0,
+        roll: 0,
+        tip: 0,
+        tool: 0,
+        block: 0,
+        overpassKill: 0,
+        ace: 0,
+        setterDump: 0
+        })
+
+        // reset Other Errors stats
+        setOtherErrorStats({
+        serveError: 0,
+        attackError: 0,
+        shank: 0,
+        doubleTouch: 0,
+        antenna: 0,
+        lineFault: 0,
+        netTouch: 0
+        })
+
+        /* HISTORY reset */
+        // back to empty arrays
+        setHustleEarnedHistory([])
+        setHustleErrorHistory([])
+        setOtherEarnedHistory([])
+        setOtherErrorHistory([])
+    }
+
 
     return {
+
+        // Stats objects
+        hustleEarnedStats,
+        hustleErrorStats,
+        otherEarnedStats,
+        otherErrorStats,
+
+        // totals
+        hustleEarned,
+        hustleErrors,
+        otherEarned,
+        otherErrors,
+
+        // functions
+        addStat,
+        subtractStat,
+        resetAllStats
 
     }
 } 
