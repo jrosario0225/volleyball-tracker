@@ -39,6 +39,8 @@ function App() {
   const [statModalTeam, setStatModalTeam] = useState(null) // "hustle" or "other"
   const [statModalAction, setStatModalAction] = useState(null) // "add" or "subtact"
 
+  // for opponent team name
+  const [opponentName, setOpponentName] = useState("Other Team")
 
 
   /* FUNCTIONS */
@@ -175,6 +177,8 @@ function App() {
           hustleTotalScore={hustleTotalScore}
           otherTotalScore={otherTotalScore}
           currentSet={currentSet}
+          opponentName={opponentName}
+          setOpponentName={setOpponentName}
         />
       </div>
 
@@ -182,7 +186,10 @@ function App() {
         <ScoreboardMobile
           hustleTotalScore={hustleTotalScore}
           otherTotalScore={otherTotalScore}
-          currentSet={currentSet} />
+          currentSet={currentSet} 
+          opponentName={opponentName}
+          setOpponentName={setOpponentName}
+          />
       </div>
 
       {/* Displaying TeamSection*/}
@@ -199,7 +206,8 @@ function App() {
             onAddEarned={addHustleEarned}
             onSubtractEarned={subtractHustleEarned}
             onAddErrors={addHustleErrors}
-            onSubtractErrors={subtractHustleErrors} />
+            onSubtractErrors={subtractHustleErrors} 
+            />
 
           <TeamSectionDesktop
             earned={stats.otherEarned}

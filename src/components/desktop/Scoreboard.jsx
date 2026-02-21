@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from "react"
 import "./Scoreboard.css"
 
 // DESKTOP Scoreboard
@@ -9,7 +10,12 @@ import "./Scoreboard.css"
 - currentSet
 found in App.css */
 
-function Scoreboard({ hustleTotalScore, otherTotalScore, currentSet }) {
+function Scoreboard({ hustleTotalScore, otherTotalScore, currentSet,
+    opponentName, setOpponentName
+ }) {
+
+    const [isEditing, setIsEditing] = useState(false)
+
     return (
         <div className="scoreboard">
             <div className="scores">
@@ -24,8 +30,24 @@ function Scoreboard({ hustleTotalScore, otherTotalScore, currentSet }) {
                     <p>{otherTotalScore}</p>
                 </div>
                 <div className="team-name">
-                    <p>Other Team</p>
+                   {isEditing ? (
+                    <input
+                    type = "text"
+                    value={opponentName}
+                    onChange={(e) => setOpponentName(e.target.value)}
+                    onBlur={() => setIsEditing(false)}
+                    onKeyDown={(e) => e.key === "Enter" && setIsEditing(false)}
+                    autoFocus
+                    className="team-name-input"
+                    />
+
+                   ): (
+                    <p onClick={() => setIsEditing(true)} style={{ cursor: "pointer" }}>
+                        {opponentName}
+                    </p>
+                   )}
                 </div>
+                
             </div>
             <div className="set-display">
                 <p>Set {currentSet}</p>
