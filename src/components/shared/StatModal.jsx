@@ -13,15 +13,13 @@ function StatModal({
     const earnedOptions = [
         ['kill', 'roll', 'tip', 'tool'],
         ['block', 'overpassKill'],
-        ['ace', 'setterDump'],
-        ['other']
+        ['ace', 'setterDump']
     ]
 
     const errorOptions = [
         ['serveError', 'attackError', 'shank'],
         ['doubleTouch'],
-        ['antenna', 'lineFault', 'netTouch'],
-        ['other']
+        ['antenna', 'lineFault', 'netTouch']
     ]
 
     const options = statModalType === "earned" ? earnedOptions : errorOptions
@@ -43,8 +41,6 @@ function StatModal({
         antenna: 'Antenna',
         lineFault: 'Line Fault',
         netTouch: 'Net Touch',
-
-        other: "Other"
     }
 
     return (

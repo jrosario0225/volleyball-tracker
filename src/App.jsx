@@ -194,6 +194,8 @@ function App() {
           <TeamSectionDesktop
             earned={stats.hustleEarned}
             errors={stats.hustleErrors}
+            earnedStats={stats.hustleEarnedStats} // displays hustle earned
+            errorStats={stats.hustleErrorStats} // displays hustle errors
             onAddEarned={addHustleEarned}
             onSubtractEarned={subtractHustleEarned}
             onAddErrors={addHustleErrors}
@@ -202,6 +204,8 @@ function App() {
           <TeamSectionDesktop
             earned={stats.otherEarned}
             errors={stats.otherErrors}
+            earnedStats={stats.otherEarnedStats} // displays other earned
+            errorStats={stats.otherErrorStats} // displays other errors
             onAddEarned={addOtherEarned}
             onSubtractEarned={subtractOtherEarned}
             onAddErrors={addOtherErrors}
