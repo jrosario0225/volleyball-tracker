@@ -278,7 +278,7 @@ function App() {
         </div>
       </div>
       <div className="set-controls">
-        <button onClick={prevSet}>Previous Set</button>
+        {currentSet === 1 ? <></> : <button onClick={prevSet}>Previous Set</button>}
         <button onClick={nextSet}>Next Set</button>
       </div>
 
