@@ -40,7 +40,7 @@ function TeamSection({ earned, errors,
                     <p className='stat-line'>Cross: {earnedStats.crossKill}</p>
                     <p className='stat-line'>Line: {earnedStats.lineKill}</p>
                     <p className='stat-line'>Tool: {earnedStats.tool}</p>
-                    <p className='stat-line'>Tip or Roll: {earnedStats.tipOrRoll}</p>
+                    <p className='stat-line'>Tip/Roll: {earnedStats.tipOrRoll}</p>
                     <p className="stat-line">Block: {earnedStats.block}</p>
                 </div>
 
