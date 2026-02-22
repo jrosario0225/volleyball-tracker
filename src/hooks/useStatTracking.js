@@ -5,14 +5,16 @@ export function useStatTracking() {
     /* Detailed stats for Hustle */
     // Specific EARNED stats for Hustle
     const [hustleEarnedStats, setHustleEarnedStats] = useState({
-        kill: 0,
-        roll: 0,
-        tip: 0,
+        crossKill: 0,
+        lineKill: 0,
         tool: 0,
+        tipOrRoll: 0,
         block: 0,
         overpassKill: 0,
+        joust: 0,
         ace: 0,
-        setterDump: 0
+        setterDump: 0,
+        ballOver: 0,
     })
 
     // Specific ERROR stats for Hustle
@@ -21,9 +23,14 @@ export function useStatTracking() {
         attackError: 0,
         shank: 0,
         doubleTouch: 0,
+        fourTouches: 0,
+        rotation: 0,
         antenna: 0,
-        lineFault: 0,
-        netTouch: 0
+        centerLineFault: 0,
+        netTouch: 0,
+        setError: 0,
+        freeBallOut: 0,
+        freeBallDrop: 0
     })
 
     // Stat HISTORY for Hustle
@@ -34,14 +41,16 @@ export function useStatTracking() {
     /* Detailed stats for Other */
     // Specific EARNED stat for Other
     const [otherEarnedStats, setOtherEarnedStats] = useState({
-        kill: 0,
-        roll: 0,
-        tip: 0,
+        crossKill: 0,
+        lineKill: 0,
         tool: 0,
+        tipOrRoll: 0,
         block: 0,
         overpassKill: 0,
+        joust: 0,
         ace: 0,
-        setterDump: 0
+        setterDump: 0,
+        ballOver: 0,
     })
 
     // Specific ERROR stats for Other
@@ -50,9 +59,14 @@ export function useStatTracking() {
         attackError: 0,
         shank: 0,
         doubleTouch: 0,
+        fourTouches: 0,
+        rotation: 0,
         antenna: 0,
-        lineFault: 0,
-        netTouch: 0
+        centerLineFault: 0,
+        netTouch: 0,
+        setError: 0,
+        freeBallOut: 0,
+        freeBallDrop: 0
     })
 
     // Stat HISTORY for Other
@@ -118,14 +132,16 @@ export function useStatTracking() {
     const resetAllStats = () => {
         // reset Hustle Earned stats
         setHustleEarnedStats({
-        kill: 0,
-        roll: 0,
-        tip: 0,
+        crossKill: 0,
+        lineKill: 0,
         tool: 0,
+        tipOrRoll: 0,
         block: 0,
         overpassKill: 0,
+        joust: 0,
         ace: 0,
-        setterDump: 0
+        setterDump: 0,
+        ballOver: 0,
         })
 
         // reset Hustle Errors stats
@@ -134,21 +150,28 @@ export function useStatTracking() {
         attackError: 0,
         shank: 0,
         doubleTouch: 0,
+        fourTouches: 0,
+        rotation: 0,
         antenna: 0,
-        lineFault: 0,
-        netTouch: 0
+        centerLineFault: 0,
+        netTouch: 0,
+        setError: 0,
+        freeBallOut: 0,
+        freeBallDrop: 0
         })
         
         // reset Other Earned stats
         setOtherEarnedStats({
-        kill: 0,
-        roll: 0,
-        tip: 0,
+        crossKill: 0,
+        lineKill: 0,
         tool: 0,
+        tipOrRoll: 0,
         block: 0,
         overpassKill: 0,
+        joust: 0,
         ace: 0,
-        setterDump: 0
+        setterDump: 0,
+        ballOver: 0,
         })
 
         // reset Other Errors stats
@@ -157,9 +180,14 @@ export function useStatTracking() {
         attackError: 0,
         shank: 0,
         doubleTouch: 0,
+        fourTouches: 0,
+        rotation: 0,
         antenna: 0,
-        lineFault: 0,
-        netTouch: 0
+        centerLineFault: 0,
+        netTouch: 0,
+        setError: 0,
+        freeBallOut: 0,
+        freeBallDrop: 0
         })
 
         /* HISTORY reset */

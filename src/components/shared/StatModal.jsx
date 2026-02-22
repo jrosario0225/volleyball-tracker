@@ -11,36 +11,46 @@ function StatModal({
     if (!showStatModal) return null
 
     const earnedOptions = [
-        ['kill', 'roll', 'tip', 'tool'],
-        ['block', 'overpassKill'],
-        ['ace', 'setterDump']
+        ["crossKill", "lineKill", "tool", "tipOrRoll"],
+        ['block', 'overpassKill', 'joust'],
+        ['ace', 'setterDump', "ballOver"]
     ]
 
     const errorOptions = [
         ['serveError', 'attackError', 'shank'],
-        ['doubleTouch'],
-        ['antenna', 'lineFault', 'netTouch']
+        ['doubleTouch', 'fourTouches', "rotation"],
+        ['antenna', 'centerLineFault', 'netTouch'],
+        ["setError", "freeBallOut", "freeBallDrop"]
     ]
 
     const options = statModalType === "earned" ? earnedOptions : errorOptions
 
     const labels = {
-        kill: 'Kill',
-        roll: 'Roll',
-        tip: 'Tip',
-        tool: 'Tool',
-        block: 'Block',
-        overpassKill: 'Over Kill',
-        ace: 'Ace',
-        setterDump: 'Setter Dump',
+
+        crossKill: "Cross",
+        lineKill: "Line",
+        tool: "Tool",
+        tipOrRoll: "Tip or Roll",
+        block: "Block",
+        overpassKill: "Overpass Kill",
+        joust: "Joust",
+        ace: "Ace",
+        setterDump: "Setter Dump",
+        ballOver: "Ball Over",
+    
 
         serveError: 'Serve Error',
         attackError: 'Attack Error',
         shank: 'Shank',
         doubleTouch: 'Double-Touch',
+        fourTouches: "4 Touches",
+        rotation: "Rotation Fault",
         antenna: 'Antenna',
-        lineFault: 'Line Fault',
+        centerLineFault: 'Center Line Fault',
         netTouch: 'Net Touch',
+        setError: "Set Error",
+        freeBallOut: "Free Ball OUT",
+        freeBallDrop: "Free Ball DROP"
     }
 
     return (
@@ -75,3 +85,9 @@ function StatModal({
 }
 
 export default StatModal;
+
+
+
+
+
+       
