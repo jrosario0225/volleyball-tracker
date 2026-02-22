@@ -48,10 +48,15 @@
 
 .button-subtract {
     background-color: #555555;
+    font-size: 18px;
+    padding: 10px 20px;
+
 }
 
 .button-add {
-    background-color: #333333
+    background-color: #333333;
+    padding: 15px 30px;
+    font-size: 24px;
 }
 
 

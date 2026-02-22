@@ -24,11 +24,11 @@ function TeamSection({ earned, errors,
 
             <div className="stat-buttons">
                 <div className="button-group">
-                    <button onClick={onSubtractEarned} className="button-subtract">-</button>
+                    <button onClick={onSubtractEarned} className="button-subtract">↩</button>
                     <button onClick={onAddEarned} className="button-add">+</button>
                 </div>
                 <div className="button-group">
-                    <button onClick={onSubtractErrors} className="button-subtract">-</button>
+                    <button onClick={onSubtractErrors} className="button-subtract">↩</button>
                     <button onClick={onAddErrors} className="button-add">+</button>
                 </div>
             </div>
