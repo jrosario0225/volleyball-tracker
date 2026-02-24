@@ -5,10 +5,10 @@ export function useStatTracking() {
     /* Detailed stats for Hustle */
     // Specific EARNED stats for Hustle
     const [hustleEarnedStats, setHustleEarnedStats] = useState({
-        crossKill: 0,
-        lineKill: 0,
+        kill: 0,
         tool: 0,
-        tipOrRoll: 0,
+        tip: 0,
+        roll: 0,
         block: 0,
         overpassKill: 0,
         joust: 0,
@@ -22,6 +22,7 @@ export function useStatTracking() {
         serveError: 0,
         attackError: 0,
         shank: 0,
+        lift: 0,
         doubleTouch: 0,
         fourTouches: 0,
         rotation: 0,
@@ -41,10 +42,10 @@ export function useStatTracking() {
     /* Detailed stats for Other */
     // Specific EARNED stat for Other
     const [otherEarnedStats, setOtherEarnedStats] = useState({
-        crossKill: 0,
-        lineKill: 0,
+        kill: 0,
         tool: 0,
-        tipOrRoll: 0,
+        tip: 0,
+        roll: 0,
         block: 0,
         overpassKill: 0,
         joust: 0,
@@ -58,6 +59,7 @@ export function useStatTracking() {
         serveError: 0,
         attackError: 0,
         shank: 0,
+        lift: 0,
         doubleTouch: 0,
         fourTouches: 0,
         rotation: 0,
@@ -132,10 +134,10 @@ export function useStatTracking() {
     const resetAllStats = () => {
         // reset Hustle Earned stats
         setHustleEarnedStats({
-        crossKill: 0,
-        lineKill: 0,
+        kill: 0,
         tool: 0,
-        tipOrRoll: 0,
+        tip: 0,
+        roll: 0,
         block: 0,
         overpassKill: 0,
         joust: 0,
@@ -149,6 +151,7 @@ export function useStatTracking() {
         serveError: 0,
         attackError: 0,
         shank: 0,
+        lift: 0,
         doubleTouch: 0,
         fourTouches: 0,
         rotation: 0,
@@ -162,10 +165,10 @@ export function useStatTracking() {
         
         // reset Other Earned stats
         setOtherEarnedStats({
-        crossKill: 0,
-        lineKill: 0,
+        kill: 0,
         tool: 0,
-        tipOrRoll: 0,
+        tip: 0,
+        roll: 0,
         block: 0,
         overpassKill: 0,
         joust: 0,
@@ -179,6 +182,7 @@ export function useStatTracking() {
         serveError: 0,
         attackError: 0,
         shank: 0,
+        lift: 0,
         doubleTouch: 0,
         fourTouches: 0,
         rotation: 0,

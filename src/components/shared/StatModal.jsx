@@ -11,13 +11,13 @@ function StatModal({
     if (!showStatModal) return null
 
     const earnedOptions = [
-        ["crossKill", "lineKill", "tool", "tipOrRoll"],
+        ["kill", "tool", "tip", "roll"],
         ['block', 'overpassKill', 'joust'],
         ['ace', 'setterDump', "ballOver"]
     ]
 
     const errorOptions = [
-        ['serveError', 'attackError', 'shank'],
+        ['serveError', 'attackError', 'shank', "lift"],
         ['doubleTouch', 'fourTouches', "rotation"],
         ['antenna', 'centerLineFault', 'netTouch'],
         ["setError", "freeBallOut", "freeBallDrop"]
@@ -27,10 +27,10 @@ function StatModal({
 
     const labels = {
 
-        crossKill: "Cross",
-        lineKill: "Line",
+        kill: "Kill",
         tool: "Tool",
-        tipOrRoll: "Tip or Roll",
+        tip: "Tip",
+        roll: "Roll",
         block: "Block",
         overpassKill: "Overpass Kill",
         joust: "Joust",
@@ -42,6 +42,7 @@ function StatModal({
         serveError: 'Serve Error',
         attackError: 'Attack Error',
         shank: 'Shank',
+        lift: "Lift",
         doubleTouch: 'Double-Touch',
         fourTouches: "4 Touches",
         rotation: "Rotation Fault",

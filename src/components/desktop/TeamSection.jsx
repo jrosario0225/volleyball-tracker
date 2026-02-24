@@ -37,10 +37,10 @@ function TeamSection({ earned, errors,
             <div className="detailed-stats">
                 {/* EARNED detailed stats */}
                 <div className="stats-column">
-                    <p className='stat-line'>Cross: {earnedStats.crossKill}</p>
-                    <p className='stat-line'>Line: {earnedStats.lineKill}</p>
+                    <p className='stat-line'>Kill: {earnedStats.kill}</p>
                     <p className='stat-line'>Tool: {earnedStats.tool}</p>
-                    <p className='stat-line'>Tip/Roll: {earnedStats.tipOrRoll}</p>
+                    <p className='stat-line'>Tip: {earnedStats.tip}</p>
+                    <p className='stat-line'>Roll: {earnedStats.roll}</p>
                     <p className="stat-line">Block: {earnedStats.block}</p>
                 </div>
 
@@ -57,8 +57,9 @@ function TeamSection({ earned, errors,
                     <p className='stat-line'>Serve: {errorStats.serveError}</p>
                     <p className='stat-line'>Attack: {errorStats.attackError}</p>
                     <p className='stat-line'>Shank: {errorStats.shank}</p>
+                    <p className='stat-line'>Lift: {errorStats.lift}</p>
                     <p className='stat-line'>D.Touch: {errorStats.doubleTouch}</p>
-                    <p className='stat-line'>4 Touches: {errorStats.fourTouches}</p>
+                    <p className='stat-line'>4 Touch: {errorStats.fourTouches}</p>
                     <p className='stat-line'>Rotation: {errorStats.rotation}</p>
                 
                 </div>
