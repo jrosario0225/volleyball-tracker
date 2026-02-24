@@ -1,5 +1,6 @@
 import React from 'react';
 import "./TeamSection.css";
+import EffectivePieChart from '../shared/EffectivePieChart';
 
 
 // DESKTOP TeamSection
@@ -72,10 +73,10 @@ function TeamSection({ earned, errors,
                     <p className='stat-line'>FB Out: {errorStats.freeBallOut}</p>
                     <p className='stat-line'>FB Drop: {errorStats.freeBallDrop}</p>
                 </div>
-
-
-
             </div>
+
+            <EffectivePieChart earned={earned} errors={errors} />
+
         </div>
     )
 }
