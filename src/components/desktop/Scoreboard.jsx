@@ -15,6 +15,12 @@ function Scoreboard({ hustleTotalScore, otherTotalScore, currentSet,
  }) {
 
     const [isEditing, setIsEditing] = useState(false)
+    const [tempName, setTempName] = useState("")
+
+    const handleConfirm = () => {
+        if (tempName.trim()) setOpponentName(tempName.trim())
+        setIsEditing(false)
+    }
 
     return (
         <div className="scoreboard">
@@ -33,16 +39,16 @@ function Scoreboard({ hustleTotalScore, otherTotalScore, currentSet,
                    {isEditing ? (
                     <input
                     type = "text"
-                    value={opponentName}
-                    onChange={(e) => setOpponentName(e.target.value)}
+                    value={tempName}
+                    onChange={(e) => setTempName(e.target.value)}
                     onBlur={() => setIsEditing(false)}
-                    onKeyDown={(e) => e.key === "Enter" && setIsEditing(false)}
+                    onKeyDown={(e) => e.key === "Enter" && handleConfirm()}
                     autoFocus
                     className="team-name-input"
                     />
 
                    ): (
-                    <p onClick={() => setIsEditing(true)} style={{ cursor: "pointer" }}>
+                    <p onClick={() => {setIsEditing(true); setTempName("")}} style={{ cursor: "pointer" }}>
                         {opponentName}
                     </p>
                    )}
