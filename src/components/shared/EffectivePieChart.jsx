@@ -24,9 +24,6 @@ function EffectivePieChart({earned, errors}) {
                 {`${name}: ${value}%`}
             </text>
         )
-
-
-
     }
 
     return (
@@ -37,7 +34,7 @@ function EffectivePieChart({earned, errors}) {
                 data={data}
                 cx={250}
                 cy={140}
-                innerRadius={55}
+                innerRadius={50}
                 outerRadius={80}
                 dataKey="value"
                 label={renderCustomLabel}

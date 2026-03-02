@@ -97,8 +97,8 @@ function StatsPieChart({ earnedStats, errorStats }) {
                     data={data}
                     cx={150}
                     cy={100}
-                    innerRadius={35}
-                    outerRadius={55}
+                    innerRadius={50}
+                    outerRadius={80}
                     dataKey="value"
                     label={renderCustomLabel}
                     labelLine={true}
