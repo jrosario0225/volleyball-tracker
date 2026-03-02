@@ -23,7 +23,7 @@ const statLabels = {
     fourTouches: "4Touch",
     rotation: "Rotation",
     antenna: "Antenna",
-    centerLineFault: "Center Line",
+    centerLineFault: "C.Line",
     netTouch: "Net Touch",
     setError: "Set Error",
     freeBallOut: "FB Out",
@@ -52,7 +52,7 @@ const statColors = {
     fourTouches: "#e17055",  // salmon
     rotation: "#fdcb6e",     // gold
     antenna: "#ff7675",      // light red
-    centerLineFault: "#a29bfe", // lavender (stands out)
+    centerLineFault: "#f0932b", // deep amber
     netTouch: "#fab1a0",     // peach
     setError: "#d35400",     // burnt orange
     freeBallOut: "#c0392b",  // crimson
@@ -91,7 +91,7 @@ function StatsPieChart({ earnedStats, errorStats }) {
     return (
 
         <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <PieChart width={300} height={250}>
+            <PieChart width={315} height={250}>
 
                 <Pie
                     data={data}
