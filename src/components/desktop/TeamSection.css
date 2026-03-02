@@ -110,3 +110,9 @@ button:active {
     padding-left: 20px;
     margin-left: 20px;
 }
+
+.stat-piecharts {
+    display: flex; /* ALWAYS ADD THIS!!!!!!! */
+    justify-content: space-around;
+    border-bottom: 2px solid #444;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import "./TeamSection.css";
 import EffectivePieChart from '../shared/EffectivePieChart';
+import StatsPieChart from "../shared/StatsPieChart";
 
 
 // DESKTOP TeamSection
@@ -34,9 +35,20 @@ function TeamSection({ earned, errors,
                 </div>
             </div>
 
-            {/* Displaying Stats */}
+
+
+
+            <div className="stat-piecharts">
+                <StatsPieChart earnedStats={earnedStats} />
+                <StatsPieChart errorStats={errorStats} />
+            </div>
+
+
+            <EffectivePieChart earned={earned} errors={errors} />
+
+            {/* Displaying Stats - I WILL PUT THIS SOMEWHERE ELSE!!!!!!!!!!! */}
+
             <div className="detailed-stats">
-                {/* EARNED detailed stats */}
                 <div className="stats-column">
                     <p className='stat-line'>Kill: {earnedStats.kill}</p>
                     <p className='stat-line'>Tool: {earnedStats.tool}</p>
@@ -44,7 +56,6 @@ function TeamSection({ earned, errors,
                     <p className='stat-line'>Roll: {earnedStats.roll}</p>
                     <p className="stat-line">Block: {earnedStats.block}</p>
                 </div>
-
                 <div className="stats-column">
                     <p className='stat-line'>OP Kill: {earnedStats.overpassKill}</p>
                     <p className='stat-line'>Joust: {earnedStats.joust}</p>
@@ -53,7 +64,6 @@ function TeamSection({ earned, errors,
                     <p className='stat-line'>Ball Over: {earnedStats.ballOver}</p>
                 </div>
 
-                {/* ERROR detailed stats*/}
                 <div className="stats-column">
                     <p className='stat-line'>Serve: {errorStats.serveError}</p>
                     <p className='stat-line'>Attack: {errorStats.attackError}</p>
@@ -74,8 +84,7 @@ function TeamSection({ earned, errors,
                     <p className='stat-line'>FB Drop: {errorStats.freeBallDrop}</p>
                 </div>
             </div>
-
-            <EffectivePieChart earned={earned} errors={errors} />
+            
 
         </div>
     )
