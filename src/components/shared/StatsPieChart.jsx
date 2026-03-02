@@ -8,11 +8,11 @@ const statLabels = {
     tip: "Tip",
     roll: "Roll",
     block: "Block",
-    overpassKill: "OP Kill",
+    overpassKill: "OPass",
     joust: "Joust",
     ace: "Ace",
-    setterDump: "S.Dump",
-    ballOver: "Ball Over",
+    setterDump: "SDump",
+    ballOver: "Over",
 
     /* Error Stats */
     serveError: "Serve",
@@ -67,7 +67,7 @@ const renderCustomLabel = ({ cx, cy, midAngle, outerRadius, value, name }) => {
     const y = cy + radius * Math.sin(-midAngle * RADIAN)
 
     return (
-        <text x={x} y={y} fill="white" textAnchor={x > cx ? "start" : "end"} dominantBaseline="central" fontSize={8}>
+        <text x={x} y={y} fill="white" textAnchor={x > cx ? "start" : "end"} dominantBaseline="central" fontSize={10}>
             {`${name}: ${value}%`}
         </text>
     )
@@ -91,14 +91,14 @@ function StatsPieChart({ earnedStats, errorStats }) {
     return (
 
         <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <PieChart width={320} height={250}>
+            <PieChart width={267} height={250}>
 
                 <Pie
                     data={data}
-                    cx={160}
-                    cy={115}
-                    innerRadius={50}
-                    outerRadius={80}
+                    cx={135}
+                    cy={120}
+                    innerRadius={45}
+                    outerRadius={55}
                     dataKey="value"
                     label={renderCustomLabel}
                     labelLine={true}
