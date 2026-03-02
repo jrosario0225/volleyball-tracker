@@ -24,8 +24,8 @@ const statLabels = {
     rotation: "Rotation",
     antenna: "Antenna",
     centerLineFault: "C.Line",
-    netTouch: "Net Touch",
-    setError: "Set Error",
+    netTouch: "Net",
+    setError: "Set",
     freeBallOut: "FB Out",
     freeBallDrop: "FB Drop"
 }
@@ -62,7 +62,7 @@ const statColors = {
 
 const renderCustomLabel = ({ cx, cy, midAngle, outerRadius, value, name }) => {
     const RADIAN = Math.PI / 180
-    const radius = outerRadius + 20
+    const radius = outerRadius + 15
     const x = cx + radius * Math.cos(-midAngle * RADIAN)
     const y = cy + radius * Math.sin(-midAngle * RADIAN)
 
@@ -91,12 +91,12 @@ function StatsPieChart({ earnedStats, errorStats }) {
     return (
 
         <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <PieChart width={315} height={250}>
+            <PieChart width={320} height={250}>
 
                 <Pie
                     data={data}
-                    cx={150}
-                    cy={100}
+                    cx={160}
+                    cy={115}
                     innerRadius={50}
                     outerRadius={80}
                     dataKey="value"
