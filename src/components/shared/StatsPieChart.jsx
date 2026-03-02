@@ -2,6 +2,7 @@ import React from "react"
 import { PieChart, Pie, Cell, Tooltip } from "recharts"
 
 const statLabels = {
+    /* Earned Stats */
     kill: "Kill",
     tool: "Tool",
     tip: "Tip",
@@ -13,6 +14,7 @@ const statLabels = {
     setterDump: "S.Dump",
     ballOver: "Ball Over",
 
+    /* Error Stats */
     serveError: "Serve",
     attackError: "Attack",
     shank: "Shank",
@@ -26,13 +28,36 @@ const statLabels = {
     setError: "Set Error",
     freeBallOut: "FB Out",
     freeBallDrop: "FB Drop"
-
 }
 
-const COLORS = [
-    "#2ecc71", "#3498db", "#9b59b6", "#f1c40f", "#e67e22",
-    "#1abc9c", "#e74c3c", "#2980b9", "#8e44ad", "#27ae60"
-]
+const statColors = {
+    // Earned - cool/varied colors
+    kill: "#2ecc71",       // green
+    tool: "#3498db",       // blue
+    tip: "#9b59b6",        // purple
+    roll: "#1abc9c",       // teal
+    block: "#00cec9",      // cyan
+    overpassKill: "#6c5ce7", // indigo
+    joust: "#0984e3",      // bright blue
+    ace: "#00b894",        // mint
+    setterDump: "#55efc4", // light teal
+    ballOver: "#74b9ff",   // sky blue
+
+    // Errors - warm/varied colors
+    serveError: "#e74c3c",   // red
+    attackError: "#e67e22",  // orange
+    shank: "#f1c40f",        // yellow
+    lift: "#d63031",         // dark red
+    doubleTouch: "#fd79a8",  // pink
+    fourTouches: "#e17055",  // salmon
+    rotation: "#fdcb6e",     // gold
+    antenna: "#ff7675",      // light red
+    centerLineFault: "#a29bfe", // lavender (stands out)
+    netTouch: "#fab1a0",     // peach
+    setError: "#d35400",     // burnt orange
+    freeBallOut: "#c0392b",  // crimson
+    freeBallDrop: "#e84393"  // hot pink
+}
 
 
 const renderCustomLabel = ({ cx, cy, midAngle, outerRadius, value, name }) => {
@@ -58,7 +83,8 @@ function StatsPieChart({ earnedStats, errorStats }) {
         .filter(([key, value]) => value > 0)
         .map(([key, value]) => ({
             name: statLabels[key],
-            value: Math.round((value / total) * 100)
+            value: Math.round((value / total) * 100),
+            color: statColors[key]
         }))
 
 
@@ -76,10 +102,10 @@ function StatsPieChart({ earnedStats, errorStats }) {
                     dataKey="value"
                     label={renderCustomLabel}
                     labelLine={true}
-                    >
-                    
+                >
+
                     {data.map((entry, index) => (
-                        <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                        <Cell key={index} fill={entry.color} />
                     ))}
                 </Pie>
                 <Tooltip formatter={(value) => `${value}%`} />
