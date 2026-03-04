@@ -66,5 +66,15 @@
     display: flex;
     justify-content: space-around;
     color: #AAA075;
- 
+}
+
+.hustle-run-display p:nth-child(2) {
+    font-size: 15px;
+    margin-top: 5px;
+
+}
+
+.other-run-display p:nth-child(2) {
+    font-size: 15px;
+    margin-top: 5px;
 }
