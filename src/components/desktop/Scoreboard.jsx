@@ -11,7 +11,8 @@ import "./Scoreboard.css"
 found in App.css */
 
 function Scoreboard({ hustleTotalScore, otherTotalScore, currentSet,
-    opponentName, setOpponentName
+    opponentName, setOpponentName,
+    hustleRun, otherRun, hustleLongestRun, otherLongestRun
  }) {
 
     const [isEditing, setIsEditing] = useState(false)
@@ -56,8 +57,20 @@ function Scoreboard({ hustleTotalScore, otherTotalScore, currentSet,
                 
             </div>
             <div className="set-display">
-                <p>Set {currentSet}</p>
+                <p>Set: {currentSet}</p>
             </div>
+
+            <div className="run-display">
+                <div className="hustle-run-display">
+                    <p>Current: {hustleRun}</p>
+                    <p>Longest: {hustleLongestRun}</p>
+                </div>
+                <div className="other-run-display">
+                   <p>Current: {otherRun}</p>
+                   <p>Longest: {otherLongestRun}</p>
+                </div>
+            </div>
+
         </div>
 
     )

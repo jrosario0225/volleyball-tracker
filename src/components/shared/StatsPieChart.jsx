@@ -95,7 +95,7 @@ function StatsPieChart({ earnedStats, errorStats }) {
 
                 <Pie
                     data={data}
-                    cx={135}
+                    cx={140}
                     cy={120}
                     innerRadius={45}
                     outerRadius={55}

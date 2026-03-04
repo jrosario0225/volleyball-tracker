@@ -2,6 +2,12 @@ import { useState } from "react";
 
 export function useStatTracking() {
 
+    // for team point RUNS
+    const [hustleRun, setHustleRun] = useState(0);
+    const [otherRun, setOtherRun] = useState(0);
+    const [hustleLongestRun, setHustleLongestRun] = useState(0);
+    const [otherLongestRun, setOtherLongestRun] = useState(0);
+
     /* Detailed stats for Hustle */
     // Specific EARNED stats for Hustle
     const [hustleEarnedStats, setHustleEarnedStats] = useState({
@@ -102,6 +108,23 @@ export function useStatTracking() {
             setOtherErrorHistory(prev => ([...prev, statKey]))
         }
 
+        // for runs
+
+        if ((team === "hustle" && type === "earned") || team === "other" && type === "error") {
+            setHustleRun(prev => {
+                const newRun = prev + 1
+                setHustleLongestRun(longest => Math.max(longest, newRun))
+                return newRun
+            })
+            setOtherRun(0)
+        } else {
+            setOtherRun(prev => {
+                const newRun = prev + 1
+                setOtherLongestRun(longest => Math.max(longest, newRun))
+                return newRun
+            })
+            setHustleRun(0)
+        }
     }
 
     /* Function to SUBTRACT the most recent stat */
@@ -200,6 +223,12 @@ export function useStatTracking() {
         setHustleErrorHistory([])
         setOtherEarnedHistory([])
         setOtherErrorHistory([])
+
+        // Reseting the runs
+        setHustleRun(0)
+        setOtherRun(0)
+        setHustleLongestRun(0)
+        setOtherLongestRun(0)
     }
 
 
@@ -220,7 +249,13 @@ export function useStatTracking() {
         // functions
         addStat,
         subtractStat,
-        resetAllStats
+        resetAllStats,
+
+        // run
+        hustleRun,
+        otherRun,
+        hustleLongestRun,
+        otherLongestRun,
 
     }
 } 

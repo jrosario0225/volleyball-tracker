@@ -179,6 +179,11 @@ function App() {
           currentSet={currentSet}
           opponentName={opponentName}
           setOpponentName={setOpponentName}
+          // adding the runs
+          hustleRun={stats.hustleRun}
+          otherRun={stats.otherRun}
+          hustleLongestRun={stats.hustleLongestRun}
+          otherLongestRun={stats.otherLongestRun}
         />
       </div>
 
