@@ -73,18 +73,25 @@ function Whiteboard() {
             ctx.lineWidth = 4
             ctx.lineCap = "round"
             ctx.strokeStyle = isEraserRef.current ? "#ffffff" : colorRef.current
-            ctx.lineTo(pos. x, pos.y)
-            ctx.strok()
+            ctx.lineTo(pos.x, pos.y)
+            ctx.stroke()
         }
 
         const stopDrawingTouch = () => {
             isDrawingRef.current = false
         }
 
+        canvas.addEventListener("touchstart", startDrawingTouch, { passive: false })
+        canvas.addEventListener("touchmove", drawTouch, { passive: false })
+        canvas.addEventListener("touchend", stopDrawingTouch)
 
-        
+        return () => {
+            canvas.removeEventListener("touchstart", startDrawingTouch)
+            canvas.removeEventListener("touchmove", drawTouch)
+            canvas.removeEventListener("touchend", stopDrawingTouch)
+        }
 
-    })
+    }, [])
 
 
     return (
