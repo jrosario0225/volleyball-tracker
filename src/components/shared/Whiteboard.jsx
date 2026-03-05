@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 function Whiteboard() {
 
@@ -8,7 +8,16 @@ function Whiteboard() {
     const [color, setColor] = useState("#000000")
     const [isEraser, setIsEraser] = useState(false)
 
-    // Drawing with Mouse
+    // ref to check previous values
+    const isDrawingRef = useRef(false)
+    const colorRef = useRef(color)
+    const isEraserRef = useRef(isEraser)
+
+    // syncing our ref and states together (using useEffect)
+    useEffect(() => { colorRef.current = color }, [color])
+    useEffect(() => { isEraserRef.current = isEraser }, [isEraser])
+
+    {/* Drawing with MOUSE */}
     const startDrawing = (e) => {
         const canvas = canvasRef.current
         const ctx = canvas.getContext("2d")
@@ -34,36 +43,48 @@ function Whiteboard() {
 
 
     // With Touch (Apple Pencil)
-    const getTouchPos = (e) => {
+    // Preventing scrolling while drawing 
+ 
+    useEffect(() => {
         const canvas = canvasRef.current
-        const rect = canvas.getBoundingClientRect()
-        return {
-            x: e.touches[0].clientX - rect.left,
-            y: e.touches[0].clientY - rect.top
+        
+        const getTouchPos = (e) => {
+            const rect = canvas.getBoundingClientRect()
+            return {
+                x: e.touches[0].clientX - rect.left,
+                y: e.touches[0].clientY - rect.top
+            }
         }
-    }
 
-    const startDrawingTouch = (e) => {
-        e.preventDefault()
-        const pos = getTouchPos(e)
-        const ctx = canvasRef.current.getContext("2d")
-        ctx.beginPath()
-        ctx.moveTo(pos.x, pos.y)
-        setIsDrawing(true)
-    }
+        const startDrawingTouch = (e) => {
+            e.preventDefault()
+            const pos = getTouchPos(e)
+            const ctx = canvas.getContext("2d")
+            ctx.beginPath()
+            ctx.moveTo(pos.x, pos.y)
+            isDrawingRef.current = true
+        }
 
-    const drawTouch = (e) => {
-        e.preventDefault()
-        if (!isDrawing) return
-        const pos = getTouchPos(e)
-        const ctx = canvasRef.current.getContext("2d")
-        ctx.lineWidth = 4
-        ctx.lineCap = "round"
-        ctx.strokeStyle = isEraser ? "#ffffff" : color
-        ctx.lineTo(pos.x, pos.y)
-        ctx.stroke()
-    }
+        const drawTouch = (e) => {
+            e.preventDefault()
+            if (!isDrawingRef.current) return 
+            const pos = getTouchPos(e)
+            const ctx = canvas.getContext("2d")
+            ctx.lineWidth = 4
+            ctx.lineCap = "round"
+            ctx.strokeStyle = isEraserRef.current ? "#ffffff" : colorRef.current
+            ctx.lineTo(pos. x, pos.y)
+            ctx.strok()
+        }
 
+        const stopDrawingTouch = () => {
+            isDrawingRef.current = false
+        }
+
+
+        
+
+    })
 
 
     return (
@@ -77,9 +98,6 @@ function Whiteboard() {
                 onMouseMove={draw}
                 onMouseUp={stopDrawing}
                 onMouseLeave={stopDrawing}
-                onTouchStart={startDrawingTouch}
-                onTouchMove={drawTouch}
-                onTouchEnd={stopDrawing}
             />
         </div>
     )
