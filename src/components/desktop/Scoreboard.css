@@ -64,14 +64,15 @@
     font-size: 20px;
     font-weight: bold;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     color: #AAA075;
+    margin-right: 75px;
+    margin-left: 75px; 
 }
 
 .hustle-run-display p:nth-child(2) {
     font-size: 15px;
     margin-top: 5px;
-
 }
 
 .other-run-display p:nth-child(2) {

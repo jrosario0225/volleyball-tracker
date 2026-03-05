@@ -39,3 +39,8 @@
     display: block;
   }
 }
+
+.view-toggle {
+  margin-top: 10px;
+  margin-left: 10px;
+}

@@ -18,12 +18,17 @@ import { useStatTracking } from "./hooks/useStatTracking"
 // StatModal import
 import StatModal from './components/shared/StatModal'
 
+// Whiteboard component
+import Whiteboard from "./components/shared/Whiteboard"
+
 function App() {
 
   /* STATES */
 
-  // importing state hook
+  // view state (between "stats" and "whiteboard")
+  const [currentView, setCurrentView] = useState("stats")
 
+  // importing state hook 
   const stats = useStatTracking()
 
   // for updating Set #
@@ -171,96 +176,112 @@ function App() {
   return (
     <div className="app">
 
-      {/* Displaying Scoreboard */}
-      <div className="desktop-only">
-        <ScoreboardDesktop
-          hustleTotalScore={hustleTotalScore}
-          otherTotalScore={otherTotalScore}
-          currentSet={currentSet}
-          opponentName={opponentName}
-          setOpponentName={setOpponentName}
-          // adding the runs
-          hustleRun={stats.hustleRun}
-          otherRun={stats.otherRun}
-          hustleLongestRun={stats.hustleLongestRun}
-          otherLongestRun={stats.otherLongestRun}
-        />
+      {/* Dashboard */}
+      <div className="view-toggle">
+        <button onClick={() => setCurrentView("stats")} className={currentView === "stats" ? "active" : ""}>Stats</button>
+        <button onClick={() => setCurrentView("whiteboard")} className={currentView === "whiteboard" ? "active" : ""}>Whiteboard</button>
       </div>
 
-      <div className="mobile-only">
-        <ScoreboardMobile
-          hustleTotalScore={hustleTotalScore}
-          otherTotalScore={otherTotalScore}
-          currentSet={currentSet} 
-          opponentName={opponentName}
-          setOpponentName={setOpponentName}
-          />
-      </div>
 
-      {/* Displaying TeamSection*/}
+      {currentView === "stats" && (
+        <div className="stats'-view">
 
-      {/* Desktop */}
-      <div className="desktop-only">
-        <div className="teams-container-desktop">
-
-          <TeamSectionDesktop
-            earned={stats.hustleEarned}
-            errors={stats.hustleErrors}
-            earnedStats={stats.hustleEarnedStats} // displays hustle earned
-            errorStats={stats.hustleErrorStats} // displays hustle errors
-            onAddEarned={addHustleEarned}
-            onSubtractEarned={subtractHustleEarned}
-            onAddErrors={addHustleErrors}
-            onSubtractErrors={subtractHustleErrors} 
+          {/* Scoreboard */}
+          <div className="desktop-only">
+            <ScoreboardDesktop
+              hustleTotalScore={hustleTotalScore}
+              otherTotalScore={otherTotalScore}
+              currentSet={currentSet}
+              opponentName={opponentName}
+              setOpponentName={setOpponentName}
+              hustleRun={stats.hustleRun}
+              otherRun={stats.otherRun}
+              hustleLongestRun={stats.hustleLongestRun}
+              otherLongestRun={stats.otherLongestRun}
             />
+          </div>
 
-          <TeamSectionDesktop
-            earned={stats.otherEarned}
-            errors={stats.otherErrors}
-            earnedStats={stats.otherEarnedStats} // displays other earned
-            errorStats={stats.otherErrorStats} // displays other errors
-            onAddEarned={addOtherEarned}
-            onSubtractEarned={subtractOtherEarned}
-            onAddErrors={addOtherErrors}
-            onSubtractErrors={subtractOtherErrors}
-          />
+          <div className="mobile-only">
+            <ScoreboardMobile
+              hustleTotalScore={hustleTotalScore}
+              otherTotalScore={otherTotalScore}
+              currentSet={currentSet}
+              opponentName={opponentName}
+              setOpponentName={setOpponentName}
+            />
+          </div>
+
+          {/*TeamSection*/}
+          {/* Desktop */}
+          <div className="desktop-only">
+            <div className="teams-container-desktop">
+
+              <TeamSectionDesktop
+                earned={stats.hustleEarned}
+                errors={stats.hustleErrors}
+                earnedStats={stats.hustleEarnedStats}
+                errorStats={stats.hustleErrorStats} 
+                onAddEarned={addHustleEarned}
+                onSubtractEarned={subtractHustleEarned}
+                onAddErrors={addHustleErrors}
+                onSubtractErrors={subtractHustleErrors}
+              />
+
+              <TeamSectionDesktop
+                earned={stats.otherEarned}
+                errors={stats.otherErrors}
+                earnedStats={stats.otherEarnedStats} // displays other earned
+                errorStats={stats.otherErrorStats} // displays other errors
+                onAddEarned={addOtherEarned}
+                onSubtractEarned={subtractOtherEarned}
+                onAddErrors={addOtherErrors}
+                onSubtractErrors={subtractOtherErrors}
+              />
+            </div>
+
+          </div>
+
+          {/* Mobile */}
+          <div className="mobile-only">
+            <div className="teams-container-mobile">
+
+              <TeamSectionMobile
+                teamName="Hustle"
+                earned={stats.hustleEarned}
+                errors={stats.hustleErrors}
+                onAddEarned={addHustleEarned}
+                onSubtractEarned={subtractHustleEarned}
+                onAddErrors={addHustleErrors}
+                onSubtractErrors={subtractHustleErrors}
+              />
+
+              <TeamSectionMobile
+                teamName="Other Team"
+                earned={stats.otherEarned}
+                errors={stats.otherErrors}
+                onAddEarned={addOtherEarned}
+                onSubtractEarned={subtractOtherEarned}
+                onAddErrors={addOtherErrors}
+                onSubtractErrors={subtractOtherErrors}
+              />
+
+            </div>
+          </div>
+          <div className="set-controls">
+            {currentSet === 1 ? <></> : <button onClick={prevSet}>Previous Set</button>}
+            <button onClick={nextSet}>Next Set</button>
+          </div>
+
         </div>
+      )}
 
-      </div>
- 
-      {/* Mobile */}
-      <div className="mobile-only">
-        <div className="teams-container-mobile">
+      {/* Putting Whiteboard ...*/}
+      {currentView === "whiteboard" && (
+        <Whiteboard />
+      )}
 
-          <TeamSectionMobile
-            teamName="Hustle"
-            earned={stats.hustleEarned}
-            errors={stats.hustleErrors}
-            onAddEarned={addHustleEarned}
-            onSubtractEarned={subtractHustleEarned}
-            onAddErrors={addHustleErrors}
-            onSubtractErrors={subtractHustleErrors}
-          />
-
-          <TeamSectionMobile
-            teamName="Other Team"
-            earned={stats.otherEarned}
-            errors={stats.otherErrors}
-            onAddEarned={addOtherEarned}
-            onSubtractEarned={subtractOtherEarned}
-            onAddErrors={addOtherErrors}
-            onSubtractErrors={subtractOtherErrors}
-          />
-
-        </div>
-      </div>
-      <div className="set-controls">
-        {currentSet === 1 ? <></> : <button onClick={prevSet}>Previous Set</button>}
-        <button onClick={nextSet}>Next Set</button>
-      </div>
 
       {/* setModal */}
-
       <SetModal
         showModal={showModal}
         pendingAction={pendingAction}
@@ -269,12 +290,12 @@ function App() {
         onCancel={cancelSetChange}
       />
 
-      <StatModal 
-      showStatModal={showStatModal}
-      statModalType={statModalType}
-      statModalTeam={statModalTeam}
-      onSelectStat={handleSelectStat}
-      onCancel={() => setShowStatModal(false)}
+      <StatModal
+        showStatModal={showStatModal}
+        statModalType={statModalType}
+        statModalTeam={statModalTeam}
+        onSelectStat={handleSelectStat}
+        onCancel={() => setShowStatModal(false)}
       />
 
 
