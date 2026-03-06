@@ -6,18 +6,18 @@ function Whiteboard() {
     const canvasRef = useRef(null)
     const [isDrawing, setIsDrawing] = useState(false)
     const [color, setColor] = useState("#000000")
-    const [isEraser, setIsEraser] = useState(false)
+    
 
     // ref to check previous values
     const isDrawingRef = useRef(false)
     const colorRef = useRef(color)
-    const isEraserRef = useRef(isEraser)
+    
 
     // syncing our ref and states together (using useEffect)
     useEffect(() => { colorRef.current = color }, [color])
-    useEffect(() => { isEraserRef.current = isEraser }, [isEraser])
+    
 
-    {/* Drawing with MOUSE */}
+    {/* Drawing with MOUSE */ }
     const startDrawing = (e) => {
         const canvas = canvasRef.current
         const ctx = canvas.getContext("2d")
@@ -32,7 +32,7 @@ function Whiteboard() {
         const ctx = canvas.getContext("2d")
         ctx.lineWidth = 4
         ctx.lineCap = "round"
-        ctx.strokeStyle = isEraser ? "#ffffff" : color
+        ctx.strokeStyle = colorRef.current
         ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY)
         ctx.stroke()
     }
@@ -44,10 +44,10 @@ function Whiteboard() {
 
     // With Touch (Apple Pencil)
     // Preventing scrolling while drawing 
- 
+
     useEffect(() => {
         const canvas = canvasRef.current
-        
+
         const getTouchPos = (e) => {
             const rect = canvas.getBoundingClientRect()
             return {
@@ -57,6 +57,8 @@ function Whiteboard() {
         }
 
         const startDrawingTouch = (e) => {
+            const touch = e.touches[0]
+            if (touch.touchType !== "stylus") return // only draws with Apple Pencil
             e.preventDefault()
             const pos = getTouchPos(e)
             const ctx = canvas.getContext("2d")
@@ -66,13 +68,15 @@ function Whiteboard() {
         }
 
         const drawTouch = (e) => {
+            const touch = e.touches[0]
+            if (touch.touchType !== "stylus") return
             e.preventDefault()
-            if (!isDrawingRef.current) return 
+            if (!isDrawingRef.current) return
             const pos = getTouchPos(e)
             const ctx = canvas.getContext("2d")
             ctx.lineWidth = 4
             ctx.lineCap = "round"
-            ctx.strokeStyle = isEraserRef.current ? "#ffffff" : colorRef.current
+            ctx.strokeStyle = colorRef.current
             ctx.lineTo(pos.x, pos.y)
             ctx.stroke()
         }
@@ -93,14 +97,42 @@ function Whiteboard() {
 
     }, [])
 
+    const presetColors = ["#000000", "#0000FF", "#FF0000"]
+
 
     return (
         <div className="whiteboard">
+            <div className="whiteboard-controls">
+
+                {presetColors.map((presetColor) => (
+                    <button
+                        key={presetColor}
+                        onClick={() => { setColor(presetColor) }}
+                        style={{
+                            backgroundColor: presetColor,
+                            height: "60px",
+                            borderRadius: "100px",
+                            border: color === presetColor ? "3px solid gray" : "none"
+                        }}
+                    />
+                ))}
+
+
+
+                <button onClick={() => {
+                    const canvas = canvasRef.current
+                    const ctx = canvas.getContext("2d")
+                    ctx.clearRect(0, 0, canvas.width, canvas.height)
+                }}>
+                    Clear All
+                </button>
+            </div>
+
             <canvas
                 ref={canvasRef}
-                width={800}
-                height={500}
-                style={{border: "1px solid black", cursor: "crosshair"}}
+                width={900}
+                height={800}
+                style={{ border: "1px solid black", cursor: "crosshair" }}
                 onMouseDown={startDrawing}
                 onMouseMove={draw}
                 onMouseUp={stopDrawing}
