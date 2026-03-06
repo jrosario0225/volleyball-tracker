@@ -67,13 +67,19 @@ function Whiteboard() {
         const newHistory = history.slice(0, -1)
         setHistory(newHistory)
 
+        const court = new Image()
+        court.src = courtImage
+        court.onload = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            ctx.drawImage(court, 0, 0, canvas.width, canvas.height)
+        }
+
         if (newHistory.length === 0) return
 
-        const img = new Image()
-        img.src = newHistory[newHistory.length - 1]
-        img.onload = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
-            ctx.drawImage(img, 0, 0)}
+        const snapshot = new Image()
+        snapshot.src = newHistory[newHistory.length - 1]
+        snapshot.onload = () => {
+            ctx.drawImage(snapshot, 0, 0)}
     }
 
 
