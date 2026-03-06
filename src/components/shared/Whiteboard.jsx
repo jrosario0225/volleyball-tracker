@@ -34,7 +34,7 @@ function Whiteboard() {
         if (!isDrawing) return
         const canvas = canvasRef.current
         const ctx = canvas.getContext("2d")
-        ctx.lineWidth = 4
+        ctx.lineWidth = 3
         ctx.lineCap = "round"
         ctx.strokeStyle = colorRef.current
         ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY)
@@ -104,7 +104,7 @@ function Whiteboard() {
             if (!isDrawingRef.current) return
             const pos = getTouchPos(e)
             const ctx = canvas.getContext("2d")
-            ctx.lineWidth = 4
+            ctx.lineWidth = 3
             ctx.lineCap = "round"
             ctx.strokeStyle = colorRef.current
             ctx.lineTo(pos.x, pos.y)
@@ -138,20 +138,20 @@ function Whiteboard() {
     return (
         <div className="whiteboard">
             <div className="whiteboard-controls">
-
+                
                 {presetColors.map((presetColor) => (
                     <button
                         key={presetColor}
                         onClick={() => { setColor(presetColor) }}
                         style={{
                             backgroundColor: presetColor,
-                            width: "20px",
-                            height: "20px",
-                            minWidth: "20px",
-                            minHeight: "20px",
+                            width: "40px",
+                            height: "40px",
+                            minWidth: "40px",
+                            minHeight: "40px",
                             borderRadius: "50%",
                             padding: "0",
-                            border: color === presetColor ? "3px solid gray" : "none"
+                            border: color === presetColor ? "3px solid white" : "none"
                         }}
                     />
                 ))}

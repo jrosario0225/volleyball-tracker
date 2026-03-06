@@ -102,6 +102,7 @@ function StatsPieChart({ earnedStats, errorStats }) {
                     dataKey="value"
                     label={renderCustomLabel}
                     labelLine={true}
+                    isAnimationActive={false}
                 >
 
                     {data.map((entry, index) => (

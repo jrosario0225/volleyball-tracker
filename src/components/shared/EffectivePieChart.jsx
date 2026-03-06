@@ -39,6 +39,7 @@ function EffectivePieChart({earned, errors}) {
                 dataKey="value"
                 label={renderCustomLabel}
                 labelLine={true}
+                isAnimationActive={false}
                 >
 
                     {data.map((entry, index) => (
