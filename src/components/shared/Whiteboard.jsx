@@ -1,6 +1,7 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 import "./Whiteboard.css"
+import courtImage from "../../assets/vball-court.jpg"
 
 function Whiteboard() {
 
@@ -25,8 +26,11 @@ function Whiteboard() {
     const startDrawing = (e) => {
         const canvas = canvasRef.current
         const ctx = canvas.getContext("2d")
+        const rect = canvas.getBoundingClientRect()
+        const scaleX = canvas.width / rect.width
+        const scaleY = canvas.height / rect.height
         ctx.beginPath()
-        ctx.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY)
+        ctx.moveTo((e.nativeEvent.offsetX * scaleX), (e.nativeEvent.offsetY * scaleY))
         setIsDrawing(true)
     }
 
@@ -34,10 +38,13 @@ function Whiteboard() {
         if (!isDrawing) return
         const canvas = canvasRef.current
         const ctx = canvas.getContext("2d")
+        const rect = canvas.getBoundingClientRect()
+        const scaleX = canvas.width / rect.width
+        const scaleY = canvas.height / rect.height
         ctx.lineWidth = 3
         ctx.lineCap = "round"
         ctx.strokeStyle = colorRef.current
-        ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY)
+        ctx.lineTo((e.nativeEvent.offsetX * scaleX), (e.nativeEvent.offsetY * scaleY))
         ctx.stroke()
     }
 
@@ -60,10 +67,7 @@ function Whiteboard() {
         const newHistory = history.slice(0, -1)
         setHistory(newHistory)
 
-        if (newHistory.length === 0) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
-            return
-        }
+        if (newHistory.length === 0) return
 
         const img = new Image()
         img.src = newHistory[newHistory.length - 1]
@@ -77,12 +81,21 @@ function Whiteboard() {
     // Preventing scrolling while drawing 
     useEffect(() => {
         const canvas = canvasRef.current
+        const ctx = canvas.getContext("2d")
+        const img = new Image()
+        img.src = courtImage
+        img.onload = () => {
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        }
+        
 
         const getTouchPos = (e) => {
             const rect = canvas.getBoundingClientRect()
+            const scaleX = canvas.width / rect.width
+            const scaleY = canvas.height / rect.height
             return {
-                x: e.touches[0].clientX - rect.left,
-                y: e.touches[0].clientY - rect.top
+                x: (e.touches[0].clientX - rect.left) * scaleX,
+                y: (e.touches[0].clientY - rect.top) * scaleY
             }
         }
 
@@ -145,10 +158,10 @@ function Whiteboard() {
                         onClick={() => { setColor(presetColor) }}
                         style={{
                             backgroundColor: presetColor,
-                            width: "40px",
-                            height: "40px",
-                            minWidth: "40px",
-                            minHeight: "40px",
+                            width: "35px",
+                            height: "35px",
+                            minWidth: "35px",
+                            minHeight: "35px",
                             borderRadius: "50%",
                             padding: "0",
                             border: color === presetColor ? "3px solid white" : "none"
@@ -162,7 +175,11 @@ function Whiteboard() {
                 <button onClick={() => {
                     const canvas = canvasRef.current
                     const ctx = canvas.getContext("2d")
-                    ctx.clearRect(0, 0, canvas.width, canvas.height)
+                    const img = new Image()
+                    img.src = courtImage
+                    img.onload = () => {
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+                    }
                 }}>
                     Clear All
                 </button>
@@ -170,8 +187,8 @@ function Whiteboard() {
 
             <canvas
                 ref={canvasRef}
-                width={900}
-                height={800}
+                width={1200}
+                height={650}
                 style={{ border: "1px solid black", cursor: "crosshair" }}
                 onMouseDown={startDrawing}
                 onMouseMove={draw}
