@@ -2,6 +2,9 @@ import { useState } from "react";
 
 export function useStatTracking() {
 
+    // for saving set history
+    const [savedSets, setSavedSets] = useState([])
+
     // for team point RUNS
     const [hustleRun, setHustleRun] = useState(0);
     const [otherRun, setOtherRun] = useState(0);
@@ -92,19 +95,19 @@ export function useStatTracking() {
     /* Function to ADD a stat */
     const addStat = (team, type, statKey) => {
         if (team === "hustle" && type === "earned") {
-            setHustleEarnedStats(prev => ({...prev, [statKey]: prev[statKey] + 1}))
+            setHustleEarnedStats(prev => ({ ...prev, [statKey]: prev[statKey] + 1 }))
             setHustleEarnedHistory(prev => ([...prev, statKey]))
         }
         else if (team === "hustle" && type === "error") {
-            setHustleErrorStats(prev => ({...prev, [statKey]: prev[statKey] + 1}))
+            setHustleErrorStats(prev => ({ ...prev, [statKey]: prev[statKey] + 1 }))
             setHustleErrorHistory(prev => ([...prev, statKey]))
         }
         else if (team === "other" && type === "earned") {
-            setOtherEarnedStats(prev => ({...prev, [statKey]: prev[statKey] + 1}))
+            setOtherEarnedStats(prev => ({ ...prev, [statKey]: prev[statKey] + 1 }))
             setOtherEarnedHistory(prev => ([...prev, statKey]))
         }
         else if (team === "other" && type === "error") {
-            setOtherErrorStats(prev => ({...prev, [statKey]: prev[statKey] + 1}))
+            setOtherErrorStats(prev => ({ ...prev, [statKey]: prev[statKey] + 1 }))
             setOtherErrorHistory(prev => ([...prev, statKey]))
         }
 
@@ -131,22 +134,22 @@ export function useStatTracking() {
     const subtractStat = (team, type) => {
         if (team === "hustle" && type === "earned" && hustleEarnedHistory.length > 0) {
             const lastStat = hustleEarnedHistory[hustleEarnedHistory.length - 1]
-            setHustleEarnedStats(prev => ({...prev, [lastStat]: prev[lastStat] - 1}))
-            setHustleEarnedHistory(prev => prev.slice(0, -1)) 
+            setHustleEarnedStats(prev => ({ ...prev, [lastStat]: prev[lastStat] - 1 }))
+            setHustleEarnedHistory(prev => prev.slice(0, -1))
         }
         else if (team === "hustle" && type === "error" && hustleErrorHistory.length > 0) {
             const lastStat = hustleErrorHistory[hustleErrorHistory.length - 1]
-            setHustleErrorStats(prev => ({...prev, [lastStat]: prev[lastStat] - 1}))
+            setHustleErrorStats(prev => ({ ...prev, [lastStat]: prev[lastStat] - 1 }))
             setHustleErrorHistory(prev => prev.slice(0, -1))
         }
         else if (team === "other" && type === "earned" && otherEarnedHistory.length > 0) {
             const lastStat = otherEarnedHistory[otherEarnedHistory.length - 1]
-            setOtherEarnedStats(prev => ({...prev, [lastStat]: prev[lastStat] - 1}))
+            setOtherEarnedStats(prev => ({ ...prev, [lastStat]: prev[lastStat] - 1 }))
             setOtherEarnedHistory(prev => prev.slice(0, -1))
         }
         else if (team === "other" && type === "error" && otherErrorHistory.length > 0) {
             const lastStat = otherErrorHistory[otherErrorHistory.length - 1]
-            setOtherErrorStats(prev => ({...prev, [lastStat]: prev[lastStat] - 1}))
+            setOtherErrorStats(prev => ({ ...prev, [lastStat]: prev[lastStat] - 1 }))
             setOtherErrorHistory(prev => prev.slice(0, -1))
         }
 
@@ -157,64 +160,64 @@ export function useStatTracking() {
     const resetAllStats = () => {
         // reset Hustle Earned stats
         setHustleEarnedStats({
-        kill: 0,
-        tool: 0,
-        tip: 0,
-        roll: 0,
-        block: 0,
-        overpassKill: 0,
-        joust: 0,
-        ace: 0,
-        setterDump: 0,
-        ballOver: 0,
+            kill: 0,
+            tool: 0,
+            tip: 0,
+            roll: 0,
+            block: 0,
+            overpassKill: 0,
+            joust: 0,
+            ace: 0,
+            setterDump: 0,
+            ballOver: 0,
         })
 
         // reset Hustle Errors stats
         setHustleErrorStats({
-        serveError: 0,
-        attackError: 0,
-        shank: 0,
-        lift: 0,
-        doubleTouch: 0,
-        fourTouches: 0,
-        rotation: 0,
-        antenna: 0,
-        centerLineFault: 0,
-        netTouch: 0,
-        setError: 0,
-        freeBallOut: 0,
-        freeBallDrop: 0
+            serveError: 0,
+            attackError: 0,
+            shank: 0,
+            lift: 0,
+            doubleTouch: 0,
+            fourTouches: 0,
+            rotation: 0,
+            antenna: 0,
+            centerLineFault: 0,
+            netTouch: 0,
+            setError: 0,
+            freeBallOut: 0,
+            freeBallDrop: 0
         })
-        
+
         // reset Other Earned stats
         setOtherEarnedStats({
-        kill: 0,
-        tool: 0,
-        tip: 0,
-        roll: 0,
-        block: 0,
-        overpassKill: 0,
-        joust: 0,
-        ace: 0,
-        setterDump: 0,
-        ballOver: 0,
+            kill: 0,
+            tool: 0,
+            tip: 0,
+            roll: 0,
+            block: 0,
+            overpassKill: 0,
+            joust: 0,
+            ace: 0,
+            setterDump: 0,
+            ballOver: 0,
         })
 
         // reset Other Errors stats
         setOtherErrorStats({
-        serveError: 0,
-        attackError: 0,
-        shank: 0,
-        lift: 0,
-        doubleTouch: 0,
-        fourTouches: 0,
-        rotation: 0,
-        antenna: 0,
-        centerLineFault: 0,
-        netTouch: 0,
-        setError: 0,
-        freeBallOut: 0,
-        freeBallDrop: 0
+            serveError: 0,
+            attackError: 0,
+            shank: 0,
+            lift: 0,
+            doubleTouch: 0,
+            fourTouches: 0,
+            rotation: 0,
+            antenna: 0,
+            centerLineFault: 0,
+            netTouch: 0,
+            setError: 0,
+            freeBallOut: 0,
+            freeBallDrop: 0
         })
 
         /* HISTORY reset */
@@ -229,6 +232,42 @@ export function useStatTracking() {
         setOtherRun(0)
         setHustleLongestRun(0)
         setOtherLongestRun(0)
+    }
+
+    const saveSet = (setNumber) => {
+        setSavedSets(prev => {
+            const exists = prev.findIndex(s => s.setNumber === setNumber)
+            const setData = {
+                setNumber,
+                hustleEarnedStats,
+                hustleErrorStats,
+                otherEarnedStats,
+                otherErrorStats,
+                hustleLongestRun,
+                otherLongestRun
+            }
+            if (exists !== -1) { // if it DOES exist, then update that set
+                const updated = [...prev]
+                updated[exists] = setData
+                return updated
+
+            } else {
+                return [...prev, setData] // if it DOESN'T then add it
+            }
+        })
+
+    }
+
+    const loadSet = (setNumber) => {
+        const setData = savedSets.find(s => s.setNumber === setNumber)
+        if (!setData) return // nothing
+
+        setHustleEarnedStats(setData.hustleEarnedStats)
+        setHustleErrorStats(setData.hustleErrorStats)
+        setOtherEarnedStats(setData.otherEarnedStats)
+        setOtherErrorStats(setData.otherErrorStats)
+        setHustleLongestRun(setData.hustleLongestRun)
+        setOtherLongestRun(setData.otherLongestRun)
     }
 
 
@@ -257,5 +296,11 @@ export function useStatTracking() {
         hustleLongestRun,
         otherLongestRun,
 
+        // saved sets (as an object)
+        savedSets,
+        saveSet,
+
+        // loading a set
+        loadSet
     }
 } 

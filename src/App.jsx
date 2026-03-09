@@ -9,9 +9,6 @@ import TeamSectionDesktop from './components/desktop/TeamSection'
 import ScoreboardMobile from './components/mobile/Scoreboard'
 import TeamSectionMobile from "./components/mobile/TeamSection"
 
-// SHARED component import
-import SetModal from "./components/shared/SetModal"
-
 // hook import
 import { useStatTracking } from "./hooks/useStatTracking"
 
@@ -34,9 +31,6 @@ function App() {
   // for updating Set #
   const [currentSet, setCurrentSet] = useState(1)
 
-  // for set tracking and modal
-  const [showModal, setShowModal] = useState(false)
-  const [pendingAction, setPendingAction] = useState(null) // "prev" or "next"
 
   // for stat selection modal
   const [showStatModal, setShowStatModal] = useState(false)
@@ -110,48 +104,23 @@ function App() {
 
   // functions for updating SET number and prompting Set Modal
   const nextSet = () => {
-    setPendingAction('next')
-    setShowModal(true)
+    stats.saveSet(currentSet)
+    const nextSetNumber = currentSet + 1
+    const alreadySaved = stats.savedSets.find(s => s.setNumber === nextSetNumber)
+    if (alreadySaved) {
+      stats.loadSet(nextSetNumber)
+    } else {
+      stats.resetAllStats()
+    }
+    setCurrentSet(nextSetNumber)
   }
 
   const prevSet = () => {
-    if (currentSet > 1) {
-      setPendingAction('prev')
-      setShowModal(true)
-    }
-  }
-
-  // function to RESET the score back to 0-0
-  const resetScore = () => {
-    stats.resetAllStats()
-  }
-
-
-  // functions to confirm or cancel Set change (move onto the next set?)
-  const confirmSetChange = () => {
-    if (pendingAction === "next") {
-      // Move to the next set
-      setCurrentSet(currentSet + 1)
-
-      //Reset scores to 0-0
-      resetScore()
-    }
-
-    else if (pendingAction === "prev") {
-      if (currentSet > 1) {
-        setCurrentSet(currentSet - 1)
-      }
-
-      //Reset scores to 0-0
-      resetScore()
-    }
-    setShowModal(false)
-    setPendingAction(null)
-  }
-
-  const cancelSetChange = () => {
-    setShowModal(false)
-    setPendingAction(null)
+    if (currentSet <= 1) return
+    stats.saveSet(currentSet)
+    const prevSetNumber = currentSet - 1
+    stats.loadSet(prevSetNumber)
+    setCurrentSet(prevSetNumber)
   }
 
 
@@ -184,7 +153,7 @@ function App() {
 
 
       {currentView === "stats" && (
-        <div className="stats'-view">
+        <div className="stats-view">
 
           {/* Scoreboard */}
           <div className="desktop-only">
@@ -280,15 +249,6 @@ function App() {
         <Whiteboard />
       )}
 
-
-      {/* setModal */}
-      <SetModal
-        showModal={showModal}
-        pendingAction={pendingAction}
-        currentSet={currentSet}
-        onConfirm={confirmSetChange}
-        onCancel={cancelSetChange}
-      />
 
       <StatModal
         showStatModal={showStatModal}
