@@ -48,7 +48,7 @@ function TeamSection({ earned, errors,
 
             {/* Displaying Stats - I WILL PUT THIS SOMEWHERE ELSE!!!!!!!!!!! */}
 
-            <div className="detailed-stats">
+            {/* <div className="detailed-stats">
                 <div className="stats-column">
                     <p className='stat-line'>Kill: {earnedStats.kill}</p>
                     <p className='stat-line'>Tool: {earnedStats.tool}</p>
@@ -83,7 +83,7 @@ function TeamSection({ earned, errors,
                     <p className='stat-line'>FB Out: {errorStats.freeBallOut}</p>
                     <p className='stat-line'>FB Drop: {errorStats.freeBallDrop}</p>
                 </div>
-            </div>
+            </div> */}
             
 
         </div>
