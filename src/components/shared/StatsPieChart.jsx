@@ -91,11 +91,11 @@ function StatsPieChart({ earnedStats, errorStats }) {
     return (
 
         <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <PieChart width={267} height={250}>
+            <PieChart width={270} height={250}>
 
                 <Pie
                     data={data}
-                    cx={140}
+                    cx={135}
                     cy={120}
                     innerRadius={45}
                     outerRadius={55}

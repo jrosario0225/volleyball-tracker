@@ -30,7 +30,7 @@
 
 .overall-stats-piechart {
     display: flex;
-
+    margin-top: 20px;
 }
 
 .summary-piecharts {
@@ -38,6 +38,3 @@
     text-align: center;
 }
 
-.summary-effective-pichart {
-    margin-left: auto;
-}
