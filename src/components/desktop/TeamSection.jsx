@@ -43,7 +43,7 @@ function TeamSection({ earned, errors,
                 <StatsPieChart errorStats={errorStats} />
             </div>
 
-
+            <h3 style={{ alignSelf: "center", marginBottom: "0"}}>Effectiveness</h3>
             <EffectivePieChart earned={earned} errors={errors} />
 
             {/* Displaying Stats - I WILL PUT THIS SOMEWHERE ELSE!!!!!!!!!!! */}

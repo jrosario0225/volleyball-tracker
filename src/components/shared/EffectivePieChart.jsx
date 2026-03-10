@@ -28,7 +28,6 @@ function EffectivePieChart({earned, errors}) {
 
     return (
         <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center"}}>
-            <h3 style={{ alignSelf: "center", marginBottom: "0"}}>Effectiveness</h3>
             <PieChart width={500} height={300}>
                 <Pie
                 data={data}
