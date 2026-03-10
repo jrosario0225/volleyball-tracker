@@ -101,8 +101,8 @@ function App() {
     }
   }
 
+  // functions for updating SET number and SAVING it
 
-  // functions for updating SET number and prompting Set Modal
   const nextSet = () => {
     stats.saveSet(currentSet)
     const nextSetNumber = currentSet + 1
@@ -122,7 +122,6 @@ function App() {
     stats.loadSet(prevSetNumber)
     setCurrentSet(prevSetNumber)
   }
-
 
   const handleSelectStat = (statKey) => {
     stats.addStat(statModalTeam, statModalType, statKey)
@@ -147,8 +146,15 @@ function App() {
 
       {/* Dashboard */}
       <div className="view-toggle">
-        <button onClick={() => setCurrentView("stats")} className={currentView === "stats" ? "active" : ""}>Stats</button>
-        <button onClick={() => setCurrentView("whiteboard")} className={currentView === "whiteboard" ? "active" : ""}>Whiteboard</button>
+        <div className="view-stats-button">
+          <button onClick={() => setCurrentView("stats")} className={currentView === "stats" ? "active" : ""}>Stats</button>
+        </div>
+        <div className="view-whiteboard-button">
+          <button onClick={() => setCurrentView("whiteboard")} className={currentView === "whiteboard" ? "active" : ""}>Whiteboard</button>
+        </div>
+        <div className="view-summary-button">
+          <button onClick={() => setCurrentView("summary")} className={currentView === "summary" ? "active" : ""}>Game Summary</button>
+        </div>
       </div>
 
 
@@ -189,7 +195,7 @@ function App() {
                 earned={stats.hustleEarned}
                 errors={stats.hustleErrors}
                 earnedStats={stats.hustleEarnedStats}
-                errorStats={stats.hustleErrorStats} 
+                errorStats={stats.hustleErrorStats}
                 onAddEarned={addHustleEarned}
                 onSubtractEarned={subtractHustleEarned}
                 onAddErrors={addHustleErrors}
