@@ -1,8 +1,10 @@
 import React from 'react';
+import { useRef } from "react"
 import EffectivePieChart from './EffectivePieChart';
 import StatsPieChart from './StatsPieChart';
 import "./GameSummary.css"
 
+import html2canvas from "html2canvas"
 
 function GameSummary({ savedSets, opponentName }) {
 
@@ -38,10 +40,25 @@ function GameSummary({ savedSets, opponentName }) {
         return combined
     }, {})
 
+    // screenshot 
+    const summaryRef = useRef(null)
+
+    const takeScreenshot = () => {
+        html2canvas(summaryRef.current).then((canvas) => {
+            const link = document.createElement("a")
+            link.download = "game-summary.png"
+            link.href = canvas.toDataURL()
+            link.click()
+        })
+    }
 
     return (
-        <div className="game-summary">
-            <h2>Game Summary</h2>
+        <div className="game-summary" ref={summaryRef}>
+            <div className="screenshot-button">
+                <button onClick={takeScreenshot}>⬇️ </button>
+            </div>
+
+            <h2>vs {opponentName}</h2>
 
 
             <div className="set-scores">
