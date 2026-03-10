@@ -18,6 +18,9 @@ import StatModal from './components/shared/StatModal'
 // Whiteboard component
 import Whiteboard from "./components/shared/Whiteboard"
 
+// GameSummary component
+import GameSummary from "./components/shared/GameSummary"
+
 function App() {
 
   /* STATES */
@@ -264,6 +267,12 @@ function App() {
         onCancel={() => setShowStatModal(false)}
       />
 
+      {currentView === "summary" && (
+        <GameSummary 
+        savedSets={stats.savedSets}
+        opponentName={opponentName}
+        />
+      )}
 
 
     </div>
