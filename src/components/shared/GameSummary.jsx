@@ -23,6 +23,21 @@ function GameSummary({ savedSets, opponentName }) {
     const totalHustleErrors = savedSets.reduce((sum, set) =>
         sum + Object.values(set.hustleErrorStats).reduce((sum, val) => sum + val, 0), 0)
 
+    // Combined Hustle Specific Stats
+    const combinedHustleEarnedStats = savedSets.reduce((combined, set) => {
+        Object.keys(set.hustleEarnedStats).forEach(key => {
+            combined[key] = (combined[key] || 0) + set.hustleEarnedStats[key]
+        })
+        return combined
+    }, {})
+
+    const combinedHustleErrorStats = savedSets.reduce((combined, set) => {
+        Object.keys(set.hustleErrorStats).forEach(key => {
+            combined[key] = (combined[key] || 0) + set.hustleErrorStats[key]
+        }, {})
+        return combined
+    }, {})
+
 
     return (
         <div className="game-summary">
@@ -46,13 +61,13 @@ function GameSummary({ savedSets, opponentName }) {
                             const otherScore = Object.values(set.otherEarnedStats).reduce((sum, val) => sum + val, 0)
                                 + Object.values(set.hustleErrorStats).reduce((sum, val) => sum + val, 0)
 
-                                const hustleWon = hustleScore > otherScore
+                            const hustleWon = hustleScore > otherScore
 
                             return (
                                 <tr key={set.setNumber} >
                                     <td>Set {set.setNumber} </td>
-                                    <td style={{ color: hustleWon ? "#2ecc71" : "#e74c3c"}}>{hustleScore}</td>
-                                    <td style={{ color: hustleWon ? "#e74c3c" : "#2ecc71"}}>{otherScore}</td>
+                                    <td style={{ color: hustleWon ? "#2ecc71" : "#e74c3c" }}>{hustleScore}</td>
+                                    <td style={{ color: hustleWon ? "#e74c3c" : "#2ecc71" }}>{otherScore}</td>
                                 </tr>
 
                             )
@@ -62,10 +77,22 @@ function GameSummary({ savedSets, opponentName }) {
 
             </div>
 
-            <h3>Hustle OVERALL Effectiveness</h3>
-            <EffectivePieChart
-                earned={totalHustleEarned}
-                errors={totalHustleErrors} />
+            <div className="summary-piecharts">
+                <div className="summary-effective-piechart">
+                    <h3>Hustle Game Effectiveness</h3>
+                    <EffectivePieChart
+                        earned={totalHustleEarned}
+                        errors={totalHustleErrors} />
+                </div>
+
+                <div className="summary-stats">
+                    <h3> Hustle Game Stats </h3>
+                    <div className="overall-stats-piechart">
+                        <StatsPieChart earnedStats={combinedHustleEarnedStats} />
+                        <StatsPieChart errorStats={combinedHustleErrorStats} />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
