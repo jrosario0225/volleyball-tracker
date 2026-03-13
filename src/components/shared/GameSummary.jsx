@@ -36,7 +36,15 @@ function GameSummary({ savedSets, opponentName }) {
     const combinedHustleErrorStats = savedSets.reduce((combined, set) => {
         Object.keys(set.hustleErrorStats).forEach(key => {
             combined[key] = (combined[key] || 0) + set.hustleErrorStats[key]
-        }, {})
+        })
+        return combined
+    }, {})
+
+    // Combined Other Team EARNED STATS (beacuse we want to see what we lost on)
+    const combinedOtherEarnedStats = savedSets.reduce((combined, set) => {
+        Object.keys(set.otherEarnedStats).forEach(key => {
+            combined[key] = (combined[key] || 0) + set.otherEarnedStats[key]
+        })
         return combined
     }, {})
 
@@ -44,7 +52,11 @@ function GameSummary({ savedSets, opponentName }) {
     const summaryRef = useRef(null)
 
     const takeScreenshot = () => {
+        const button = document.querySelector(".download-btn")
+        button.style.display = "none" // hide button before screenshot
+
         html2canvas(summaryRef.current).then((canvas) => {
+            button.style.display = "block" // show again after sc
             const link = document.createElement("a")
             link.download = "game-summary.png"
             link.href = canvas.toDataURL()
@@ -55,7 +67,7 @@ function GameSummary({ savedSets, opponentName }) {
     return (
         <div className="game-summary" ref={summaryRef}>
             <div className="screenshot-button">
-                <button onClick={takeScreenshot}>⬇️ </button>
+                <button className="download-btn" onClick={takeScreenshot}>⬇️ </button>
             </div>
 
             <h2>vs {opponentName}</h2>
@@ -109,6 +121,10 @@ function GameSummary({ savedSets, opponentName }) {
                         <StatsPieChart errorStats={combinedHustleErrorStats} />
                     </div>
                 </div>
+            </div>
+            <div className="other-stats-piechart">
+                <h3>{opponentName} Stats</h3>
+                <StatsPieChart earnedStats={combinedOtherEarnedStats} />
             </div>
         </div>
     )

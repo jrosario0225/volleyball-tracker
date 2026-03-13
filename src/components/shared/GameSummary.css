@@ -1,4 +1,5 @@
 .game-summary {
+    background-color: #242424;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -41,4 +42,12 @@
 .screenshot-button {
     margin-left: auto;
     font-size: 5px;
+}
+
+.other-stats-piechart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: -20px;
 }
