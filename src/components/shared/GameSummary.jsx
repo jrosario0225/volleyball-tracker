@@ -58,7 +58,7 @@ function GameSummary({ savedSets, opponentName }) {
         html2canvas(summaryRef.current).then((canvas) => {
             button.style.display = "block" // show again after sc
             const link = document.createElement("a")
-            link.download = "game-summary.png"
+            link.download = `${opponentName}-game-summary.png`
             link.href = canvas.toDataURL()
             link.click()
         })
