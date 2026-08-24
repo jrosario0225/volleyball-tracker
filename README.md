@@ -1,6 +1,6 @@
 # Volleyball Stat Tracker
 
-A courtside stat-tracking web app for Club Hustle Volleyball. Every point is logged as a **specific action** — not just a tally — so a coach can see *why* the team is winning or losing points while the match is still going on.
+A courtside stat-tracking web app for Hustle Volleyball Club. Every point is logged as a **specific action** — not just a tally — so a coach can see *why* the team is winning or losing points while the match is still going on.
 
 **Live app:** https://website-phi-one-74.vercel.app
 
@@ -126,6 +126,3 @@ Then open the URL Vite prints (default `http://localhost:5173`).
 - **Team-level only** — stats aren't attributed to individual players yet, which is the biggest feature request from coaches.
 - **Match history isn't stored** — the game summary covers one match; there's no season view or trends across games.
 
----
-
-Built for Club Hustle Volleyball.
