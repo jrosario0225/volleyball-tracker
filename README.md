@@ -109,6 +109,8 @@ src/
 
 ## Running locally
 
+Requires Node.js 20+.
+
 ```bash
 git clone https://github.com/jrosario0225/volleyball-tracker.git
 cd volleyball-tracker
@@ -116,7 +118,16 @@ npm install
 npm run dev
 ```
 
-Then open the URL Vite prints (default `http://localhost:5173`).
+Then open the URL Vite prints (usually `http://localhost:5173`).
+
+### Scripts
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Start the Vite dev server with hot reload |
+| `npm run build` | Production build into `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | Run ESLint over the project |
 
 ---
 
@@ -125,4 +136,3 @@ Then open the URL Vite prints (default `http://localhost:5173`).
 - **No persistence** — stats live in React state, so a refresh mid-match loses the current game. Saving to `localStorage` is the next thing I'd add.
 - **Team-level only** — stats aren't attributed to individual players yet, which is the biggest feature request from coaches.
 - **Match history isn't stored** — the game summary covers one match; there's no season view or trends across games.
-
